@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Event</title>
+</head>
+
+<body>
+
+    <h1>JavaScript Event</h1>
+
+    <!---- Event Bubbling & Capturing ---->
+    <!-- Yang Membedakan Event Bubbling dan Capturing adalah Jika Bubbling akan 
+        menampilkan Element yang diklik terlebih dahulu lalu parent akan mengikuti, 
+        sedangkan Capturing Kebalikannya. -->
+
+    <!-- Event Bubbling -->
+
+    <!--Ketika suatu peristiwa terjadi pada suatu elemen,  pertama-tama ia akan menjalankan penangannya, 
+        lalu pada induknya, lalu terus ke atas pada leluhur lainnya. -->
+
+    <!--- Info Lengkap Seputar Bubbling dan Capturing ---->
+    <a href="https://javascript.info/bubbling-and-capturing">Bubbling And Capturing</a>
+
+
+    <h1>Bubbling Event</h1>
+    <form> <!--Untuk Contoh bisa gunakan : onclick="console.log('Form Clicked !');"-->
+        Form
+        <div> <!--Untuk Contoh bisa gunakan : onclick="console.log('Div Clicked !');"-->
+            Div
+            <p> <!--Untuk Contoh bisa gunakan : onclick="console.log('P Clicked !');"-->
+                Paragraf
+            </p>
+        </div>
+    </form>
+    <!--Output : P Clicked !  Div Clicked ! Form Clicked !
+        Jika Paragraf Atau Div diklik Maka Form dan Yang diatasnya akan Ikut ke Klik -->
+
+
+    <!--- Cara Pertama Menghentikannya Menggunakan Event Target --->
+    <script>
+        document.getElementsByTagName('form')[0].addEventListener('click', function () {
+            console.log("Ini Form !");
+        })
+
+        document.getElementsByTagName('div')[0].addEventListener('click', function (event) {
+            console.log("Ini Div !");
+            event.stopPropagation();
+        })
+
+        document.getElementsByTagName('p')[0].addEventListener('click', function (event) {
+            console.log("Ini Paragraf !");
+            event.stopPropagation();
+        })
+        // Dengan Adanya stopPropagation() maka bubbling bisa dikontrol.
+    </script>
+
+
+    <!-- Event Capturing -->
+    <h1>Capturing Event</h1>
+    <div id="capture">
+        Div
+        <p id="paragraf">Paragraf</p>
+    </div>
+
+    <!-- Contoh Sintaks Yang Salah -->
+    <!-- <script>
+        let Capture = document.getElementById('capture');
+        let Paragraf = document.getElementById('paragraf')
+
+        Capture.addEventListener('click', function () {
+            console.log('This is a div');
+        }, true)
+
+        Paragraf.addEventListener('click', function () {
+            console.log('This is a Paragraf');
+        }, true)
+    </script> -->
+
+    <!-- Contoh Sintaks Yang Benar -->
+    <script>
+        let Capturing = document.getElementById('capture');
+        let Parag = document.getElementById('paragraf')
+
+        Capturing.addEventListener('click', function () {
+            console.log("This is Right Div !");
+        });
+
+        Parag.addEventListener('click', function (event) {
+            console.log("This is Right Paragraf !");
+            event.stopPropagation();
+        });
+    </script>
+
+
+    <!-- Contoh Memiliki Banyak Child -->
+    <h3>Contoh Banyak Child</h3>
+    <div id="MainParent">
+        <p id="para">Paragraf One</p>
+        <p id="para">Paragraf Two</p>
+        <p id="para">Paragraf Three</p>
+        <p id="para">Paragraf Four</p>
+    </div>
+
+    <script>
+        let Paragraf = document.querySelectorAll('#para');
+
+        Paragraf.forEach(function (AllParagraf) {
+            AllParagraf.addEventListener('click', function () {
+                console.log('You Clicked Me !');
+            });
+        });
+    </script>
+
+
+
+    <!----------- Next ------------>
+
+    <!---- Event Handler in HTML Attribute ---->
+    <h3 style="align-items: center; text-align: center;">
+        Event Handler in HTML Attribute
+    </h3>
+
+    <div style="align-items: center; text-align: center;">
+        <button onclick="console.log('Main Button Clicked !');">
+            Main Button
+        </button>
+    </div>
+    <!-- Output : Button Clicked ! -->
+
+
+    <!---- Event Handler in HTML Attribute Using Funtion---->
+    <div id="container">
+        <button id="btn" onclick="btnHandler()">
+            Second Button
+        </button>
+
+        <button id="btn" onclick="console.log(`Id = ${this.id}`);">
+            Third Button
+        </button>
+        <!-- Output : Id = btn -->
+
+        <button id="btn" type='button' onclick="console.log(`Type = ${this.type}`);">
+            Fourth Button
+        </button>
+        <!-- Output : Type = button -->
+
+    </div>
+    <script>
+        function btnHandler() {
+            console.log('Second Button Clicked !');
+        }
+        // Output : Second Button Clicked !
+    </script>
+
+
+    <!----------- Next ------------>
+    <!-- Level 0 Event Handler -->
+    <h3 style="align-items: center; text-align: center; margin-top: 3rem;">
+        Level 0 Event Handler <br> ( Using JavaScript on onclick )
+    </h3>
+
+    <div class="levelZero">
+        <button id="levelZero">Level Zero</button>
+    </div>
+
+    <script>
+        let btnZero = document.getElementById('levelZero');
+        btnZero.onclick = (function () {
+            console.log('Using Script On OnClick');
+        })
+    </script>
+
+
+    <!----------- Next ------------>
+    <!-- addEventListener() and -->
+    <h3 style="align-items: center; text-align: center; margin-top: 3rem;">
+        addEventListener() and
+    </h3>
+    <button id="addAnd">
+        Click And !
+    </button>
+
+    <script>
+        let ButtonAnd = document.getElementById('addAnd');
+
+        // Menggunakan Cara And Yaitu Dengan Menyatukan Function & addEventListener
+        function andAddEvent() {
+            console.log("Button Menggunakan addEventListener() and");
+        }
+        ButtonAnd.addEventListener('click', andAddEvent); // Dilarang Menggunakan ()
+        // Output : Button Menggunakan addEventListener() and
+    </script>
+
+
+    <!----------- Next ------------>
+    <!-- removeEventListener() and -->
+    <h3 style="align-items: center; text-align: center; margin-top: 3rem;">
+        removeEventListener() and
+    </h3>
+    <button id="remove">Remove addEventListener</button>
+
+    <script>
+        let RemoveButton = document.getElementById("remove");
+
+        // Gunakan Metode And Dulu
+        function Remove() {
+            console.log('Contoh Saja');
+        }
+        // Kedua Masukan addEventListener
+        RemoveButton.addEventListener('click', Remove)
+        // Ketiga Hapus removeEventListener
+        RemoveButton.removeEventListener('click', Remove)
+    </script>
+
+
+</body>
+
+<style>
+    * {
+        font-family: monospace;
+    }
+    form {
+        border: 2px solid #ff2800;
+        padding: 1rem;
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 2rem;
+    }
+
+    form div {
+        border: 2px solid navy;
+        padding: 1rem;
+    }
+
+    form div p {
+        border: 2px solid green;
+        padding: 1rem;
+    }
+
+    table {
+        margin-bottom: 1rem;
+    }
+
+    #capture,
+    #MainParent,
+    #levelZero {
+        border: 3px solid firebrick;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    #paragraf,
+    #para {
+        border: 3px solid burlywood;
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    #container, .levelZero {
+        align-items: center;
+        text-align: center;
+    }
+
+    button {
+        margin-bottom: 1rem;
+        padding: 10px;
+        margin: 18px;
+        outline: 0;
+        border: 1px solid green;
+        background-color: goldenrod;
+        border-radius: 20px;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+    }
+</style>
+
+</html>

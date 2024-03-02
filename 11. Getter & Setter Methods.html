@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getter & Setter Methods</title>
+</head>
+
+<style>
+    h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+</style>
+
+<body>
+
+    <h1>Getter & Setter Methods</h1>
+
+    <script>
+
+        /*
+        Getter & Setter Methods
+        Dua method yang tugasnya untuk mengambil dan 
+        mengisi data ke dalam objek.
+        */
+
+        // Javascript Classes
+        // Contoh Simple 1
+        class Country {
+            constructor(Asia, Eropa, Afrika) {
+                this.Asia = Asia,
+                    this.Eropa = Eropa,
+                    this.Afrika = Afrika
+            }
+        }
+
+        const NegaraAsia = new Country
+            ('Indonesia', 'Malaysia', 'Jepang');
+        console.log(NegaraAsia);
+
+
+        console.log('< ----- Class Methods ----- >');
+        // Javascript Class Methods
+        class Pulau {
+            constructor(PulauIndo) {
+                this.PulauIndo = PulauIndo
+            }
+            NamaPulau() {
+                return 'Nama Pulau ' + this.PulauIndo
+            }
+        }
+
+        const NamaPulauIndonesia = new Pulau('Bali');
+        console.log(NamaPulauIndonesia.NamaPulau());
+
+
+        console.log('< ----- Cara Mengganti Nama Pada Class ----- >');
+        // Cara Mengganti pada const (pernyataan nama pulau)
+        class PulauNegaraJepang {
+            constructor(PulauJepang) {
+                this.PulauJepang = PulauJepang
+            }
+            NamaPulau() {
+                return 'Nama Pulau ' + this.PulauJepang
+            }
+            NamaPulauBaru(newName) {
+                this.PulauJepang = newName
+                return 'Nama Pulau Baru ' + this.newName
+            }
+        }
+
+        const NamaPulauJepang = new PulauNegaraJepang('Bali');
+
+        NamaPulauJepang.NamaPulauBaru('Kunashiri');
+        console.log(NamaPulauJepang);
+
+
+        console.log('< ----- Getter Methods ----- >');
+        // Getter Methods
+
+        class AnimeGenre {
+            constructor(RomanceAnime, AdventureAnime) {
+                this.RomanceAnime = RomanceAnime
+            }
+            // Gunakan get
+            get AnimeName() {
+                return 'Romance Anime Terbaik ' + this.RomanceAnime
+            }
+        }
+
+        const BestAnimeByGenre = new AnimeGenre('Romantic Killer')
+        console.log(BestAnimeByGenre.AnimeName); // Tidak memerlukan (), pada AnimeName()
+
+
+
+        console.log('< ----- Setter Methods (Pergantian Nama Perusahaan) ----- >');
+        // Setter Methods Pergantian Nama Perusahaan
+        class Company {
+            constructor(StartUp) {
+                this.StartUp = StartUp
+            }
+            // Gunakan set
+            set ChangeName(NewStartUp) {
+                this.StartUp = NewStartUp
+            }
+        }
+
+        const IndoCompany = new Company('Go-Jek');
+        IndoCompany.ChangeName = 'Bukalapak';
+        console.log(IndoCompany);
+
+
+        console.log('< ----- Getter & Setter ----- >');
+        // Using Getter and Setter
+        // Singkatnya Untuk Memakai 2 Nama dalam 1 Object
+        class Cars {
+            constructor(GermanCar) {
+                this.GermanCar = GermanCar
+            }
+            set MercedesBenz(MercyCar) {
+                this.GermanCar = MercyCar
+            }
+            get MercedesBenz() {
+                return this.GermanCar
+            }
+        }
+
+        // Log Pertama Pada Mobil Mercy
+        const CarName = new Cars('Mercedes-Benz S450 SL')
+        console.log(CarName.MercedesBenz);
+
+        // Log Kedua Pada Mobil MercedesBenz
+        CarName.MercedesBenz = 'Mercedes-Benz AMG GTR PRO BLACK SERIES'
+        console.log(CarName.MercedesBenz);
+
+
+        // Contoh Kedua Pada Getter & Setter
+        console.log('< ----- Getter & Setter  ----- >');
+        class SuperItalianCar {
+            constructor(ItalianCars) {
+                this.ItalianCars = ItalianCars
+            }
+            set Ferrari(FerrariCar) {
+                this.Ferrari = FerrariCar
+            }
+            get Ferrari() {
+                return this.ItalianCars
+            }
+        }
+
+        // Log Pertama
+        const SuperCar = new SuperItalianCar('Ferrari 812 SuperFast')
+        console.log(SuperCar.Ferrari);
+
+        // Log Kedua
+        SuperCar.ItalianCars = '1957 Ferrari 335 Sport Scaglietti'
+        console.log(SuperCar.ItalianCars);
+
+
+        // Contoh Ketiga Pada Getter & Setter
+        console.log('< ----- Getter & Setter  ----- >');
+        class AmericaRarestMuscleCars {
+            constructor(MuscleCars) {
+                this.MuscleCars = MuscleCars
+            }
+            set Ford(FordMuscleCars) {
+                this.MuscleCars = FordMuscleCars
+            }
+            get Ford() {
+                return this.MuscleCars
+            }
+        }
+
+        // Log Pertama
+        const AmericanMuscleCars = new AmericaRarestMuscleCars('1969/1970 Ford Mustang Boss 429')
+        console.log(AmericanMuscleCars.Ford);
+
+        // Log Kedua
+        AmericanMuscleCars.Ford = 'Ford Mustang 1967 GT500 ELEANOR'
+        console.log(AmericanMuscleCars.Ford);
+
+
+
+        // JavaScript Class Expression
+        // Tambahkan Let didepan class
+        let Person = class {
+            constructor(name) {
+                this.name = name
+            }
+            getName() {
+                return this.name
+            }
+        }
+
+        const Person1 = new Person('Bang Boy');
+        console.log(Person1);
+
+
+        // Soal 1 (Pemula) (Nama Huruf Kapital)
+        console.log('<----- Soal 1 ----->');
+        // Definisikan objek pengguna
+        const objekPengguna = {
+            _nama: "",
+
+            get nama() {
+                return this._nama.toUpperCase();
+            },
+
+            set nama(newNama) {
+                this._nama = newNama.toUpperCase();
+            }
+        };
+        console.log(objekPengguna.nama); // Menggunakan getter untuk mengambil nama (akan mengembalikan nilai awal kosong)
+
+        objekPengguna.nama = "john drreroe"; // Menggunakan setter untuk mengubah nama (akan mengubahnya menjadi "JOHN DOE")
+        console.log(objekPengguna.nama); // Menggunakan getter untuk mengambil nama yang telah diubah
+
+
+
+        // Soal 2 (Pemula) (Nominal Uang)
+        const Nominal = {
+            _NominalUang: "",
+
+            get Uang() {
+                return this._NominalUang.toString();
+            },
+
+            set Uang(newNominal) {
+                this._NominalUang = newNominal.toString()
+            }
+        }
+        console.log(Nominal.Uang);
+
+        Nominal.Uang = '1000000'
+        console.log(Nominal.Uang);
+
+
+        // Soal 3 (Pemula) (Uang)
+        console.log('<----- Soal 3 ----->');
+        // Definisikan objek pengiriman
+        const objekPengiriman = {
+            // Properti alamat
+            _alamat: "", // Gunakan underscore (_) sebagai konvensi untuk menandai properti pribadi
+
+            // Getter untuk properti alamat
+            get alamat() {
+                return this._alamat;
+            },
+
+            // Setter untuk properti alamat
+            set alamat(newAlamat) {
+                // Validasi alamat pengiriman (misalnya, pastikan alamat tidak kosong)
+                if (newAlamat.trim() === "") {
+                    console.log("Alamat pengiriman tidak valid.");
+                } else {
+                    this._alamat = newAlamat;
+                    console.log("Alamat pengiriman berhasil diubah menjadi: " + this._alamat);
+                }
+            }
+        };
+
+        // Menggunakan getter dan setter
+        console.log(objekPengiriman.alamat); // Menggunakan getter untuk mengambil alamat (akan mengembalikan nilai awal kosong)
+
+        objekPengiriman.alamat = "Jalan Contoh No. 123"; // Menggunakan setter untuk mengubah alamat (valid)
+        console.log(objekPengiriman.alamat); // Menggunakan getter untuk mengambil alamat yang telah diubah
+
+        objekPengiriman.alamat = ""; // Menggunakan setter untuk mengubah
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

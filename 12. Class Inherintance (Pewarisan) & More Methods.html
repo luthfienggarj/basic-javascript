@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Inherintance & More Methods</title>
+</head>
+
+<body style="background-color: #051650;">
+
+    <h1 style="color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center;">
+        Class Inherintance & More Methods
+    </h1>
+
+    <script>
+
+        /*
+        Class Inherintance (Pewarisan)
+        Konsep dimana sebuah class dapat mewarisi sifat-sifat dan perilaku dari class lainnya.
+        */
+
+        // Normal Inheritance
+        // Parent Class
+        class Person {
+            constructor(firstName) {
+                this.firstName = firstName
+            }
+            greet() {
+                console.log("Say My Name," + ' ' + this.firstName);
+            }
+        }
+
+        // Inheriting parent class
+        class Person2 extends Person {
+            // Kosong
+        }
+
+        // Declaration Code
+        const Person3 = new Person2('My Name Is Thomas Shelby');
+        Person3.greet()
+
+
+
+
+        // Super Methods (Class Extends Di Isi)
+        console.log('<----- Super Methods ----->');
+        // Parent Class
+        class StudentName {
+            constructor(student) {
+                this.student = student
+            }
+            Name() {
+                console.log('Indonesia Student Name :' + ' ' + this.student);
+            }
+        }
+
+        // Inheriting parent class
+        class ExtendsName extends StudentName {
+            // Constructor
+            constructor(student) {
+                // Log
+                console.log("Extending Class");
+                // Call the super class constructor and pass in the name parameter
+                super(student)
+            }
+        }
+        // Declaration Code
+        const Student = new ExtendsName('Male')
+        Student.Name()
+
+
+
+        // Overriding (2 Methods Yang Sama Di Perbolehkan)
+        console.log('<----- Overriding Methods ----->');
+        /* 
+        Override adalah fitur yang memungkinkan kamu membuat method di dalam 
+        kelas child yang nama methodnya sama dengan method di class parentnya.
+        */
+
+        // Parent Class
+        class University {
+            // Constructor
+            constructor(UniversityName) {
+                this.UniversityName = UniversityName
+            }
+            // Methods Pertama
+            EnglandUniverity() {
+                console.log('Best University In England :' + ' ' + this.UniversityName);
+            }
+        }
+
+        // Child / Extends Class
+        class BestUniversity extends University {
+            // Memiliki Methods Yang Sama
+            EnglandUniverity() {
+                console.log('Best University In England Is :' + ' ' + this.UniversityName);
+            }
+        }
+        // Declaration Code
+        const Univ = new BestUniversity('Oxford University')
+        Univ.EnglandUniverity()
+
+
+
+        // Static Methods
+        console.log('<----- Static Methods ----->');
+        /* 
+        Fungsi atau method pada sebuah kelas yang bersifat statis
+        */
+        // Parent Class
+        class Handphone {
+            // Constructor
+            constructor(KoreaPhone) {
+                this.KoreaPhone = KoreaPhone
+            }
+            // Static Dan Gunakan x agar new Methods dibawah bisa digunakan
+            static SamsungPhone(x) {
+                // This diganti ke x
+                console.log('Korea Phone Brand : ' + x.KoreaPhone);
+            }
+        }
+        // Masukan Variable Baru
+        const ExampleStatic = new Handphone('Samsung S23 Ultra')
+        // ExampleStatic.SamsungPhone() <-- Ini Sintaks Yang Salah
+        // Lakukan Declaration Berurutan, Handphone -> SamsungPhone -> ExampleStatic
+        Handphone.SamsungPhone(ExampleStatic);
+
+
+
+        // Private Methods
+        console.log('<----- Private Methods ----->');
+        /*
+        Metode privat dimulai dengan awalan hash # dan hanya dapat 
+        diakses di dalam kelas yang mendefinisikannya.
+        */
+
+        // Parent Class
+        class Company {
+            // Constructor
+            constructor(name, address) {
+                this.name = name,
+                    this.address = address
+            }
+            // Ketika ada # didalam Methods paka Private Methods digunakan
+            #PropertyCompany() {
+                return this.name + ' ' + this.address
+            }
+            // Cara agar Private bisa digunakan maka buat Methods Baru
+            Display() {
+                console.log(this.#PropertyCompany());
+            }
+        }
+        const IndonesiaCompany = new Company('PT Maha Properti Indonesia Tbk.', 'Mayapada Tower 2, Lantai 20.')
+        IndonesiaCompany.Display()
+
+        // Another Example
+        class WorldCup {
+            constructor(Winner, RunnerUp, ThirdPlace) {
+                this.Winner = Winner,
+                    this.RunnerUp = RunnerUp,
+                    this.ThirdPlace = ThirdPlace
+            }
+            #SouthAfrica() {
+                return this.Winner + this.RunnerUp + this.ThirdPlace
+            }
+            DisplayWC() {
+                console.log(`Winner World Cup 2010 : ${this.Winner}`);
+                console.log(`Runner Up World Cup 2010 : ${this.RunnerUp}`);
+                console.log(`Third Place World Cup 2010 : ${this.ThirdPlace}`);
+            }
+        }
+        const ShowResult = new WorldCup('Spain', 'Netherlands', 'Germany')
+        ShowResult.DisplayWC();
+
+
+
+        // Static Private Methods
+        console.log('<----- Static & Private Methods ----->');
+        // Example
+
+        // Parent Class
+        class WorldCupBrazil {
+            // Constructor
+            constructor(Winner, RunnerUp, ThirdPlace) {
+                this.Winner = Winner,
+                    this.RunnerUp = RunnerUp,
+                    this.ThirdPlace = ThirdPlace
+            }
+            // Static dan Private Methods
+            static #Brazil(x) { // Tambahkan x
+                // Ganti This menjadi x
+                return x.Winner + x.RunnerUp + x.ThirdPlace
+            }
+            // Memnbuat Methods kedua sama seperti Private Methods
+            DisplayWC() {
+                console.log(WorldCupBrazil.#Brazil(this));
+            }
+        }
+        // Declaration Code
+        const ShowResultWCBrazil = new WorldCupBrazil('Germany ', 'Argentina ', 'Netherlands ')
+        ShowResultWCBrazil.DisplayWC();
+
+
+
+        // Soal - Soal Inherintance
+        console.log('<----- Soal Normal Inherintance ----->');
+
+        class Kendaraan {
+            constructor(NamaMobil, Merk, DesTambahan) {
+                this.NamaMobil = NamaMobil,
+                    this.Merk = Merk,
+                    this.DesTambahan = DesTambahan
+            }
+            descripsi() {
+                console.log("Deskripsi Mobil " + this.NamaMobil + this.Merk);
+            }
+        }
+
+        class Mobil extends Kendaraan {
+            descripsi() {
+                console.log("Deskripsi Tambahan" + ' ' + this.DesTambahan);
+            }
+        }
+
+        const Keterangan = new Mobil('Supra', 'Toyota', 'Full Original')
+        Keterangan.descripsi()
+
+
+        // Soal 2 Normal Inherintance
+        class Hewan {
+            constructor(kucing, anjing) {
+                this.kucing = kucing,
+                    this.anjing = anjing
+            }
+            Bersuara() {
+                console.log("Suara Hewan");
+            }
+        }
+
+        class Kucing extends Hewan {
+            Bersuara() {
+                console.log(`Suara Kucing : ${this.kucing}`);
+            }
+        }
+
+        class Anjing extends Hewan {
+            Bersuara() {
+                console.log(`Suara Anjing : ${this.anjing}`);
+            }
+        }
+
+        const SuaraKucing = new Kucing('Meow', 'Gukk');
+        const SuaraAnjing = new Anjing('Meow', 'Gukk');
+        SuaraKucing.Bersuara();
+        SuaraAnjing.Bersuara();
+
+
+
+
+        console.log('<----- Soal Super Methods ----->');
+        // Soal 3 Super Methods
+        class People {
+            constructor(Greet) {
+                this.Greet = Greet
+            }
+            Sapa() {
+                console.log("Halo Apa Kabar?" + ' ' + this.Greet);
+            }
+        }
+
+        class Guru extends People {
+            constructor(Greet) {
+                console.log("Halo Apa Kabar?");
+                super(Greet)
+            }
+        }
+
+        const Menyapa = new Guru("Selamat Datang Di Kelas")
+        Menyapa.Sapa();
+
+
+        // Soal 4 Super Methods
+        class Animals {
+            constructor(AnimalName) {
+                this.AnimalName = AnimalName
+            }
+            makan() {
+                return this.AnimalName
+            }
+        }
+
+        class Bird extends Animals {
+            constructor(AnimalName) {
+                console.log(AnimalName + ' ' + "Sedang Makan Ulat");
+                super(AnimalName)
+            }
+        }
+
+        const AnimalFood = new Bird("Burung")
+        AnimalFood.makan()
+
+
+        console.log('<----- Soal Override Methods ----->');
+        // Soal 5 Override Methods
+        class HewanRumahan {
+            constructor(Voice) {
+                this.Voice = Voice
+            }
+            suara() {
+                console.log("Suara Anjing : " + ' ' + 'Pinjem Dulu Seratus');
+            }
+        }
+
+        class Dog extends HewanRumahan {
+            suara() {
+                console.log("Suara Anjing Sebenarnya :" + ' ' + this.Voice);
+            }
+        }
+
+        const RealVoice = new Dog('Woof Woof')
+        RealVoice.suara();
+
+
+        console.log('<----- Soal Override Methods ----->');
+        // Soal 6 Override Methods
+        class Makanan {
+            constructor(DeskripsiMakanan) {
+                this.DeskripsiMakanan = DeskripsiMakanan
+            }
+            deskripsi() {
+                console.log("Pizza Adalah Makanan Buat Rame-Rame");
+            }
+        }
+
+        class Pizza extends Makanan {
+            deskripsi() {
+                console.log(this.DeskripsiMakanan);
+            }
+        }
+        const Desk = new Pizza("Pizza adalah hidangan lezat yang terbuat dari adonan dan berbagai macam topping.")
+        Desk.deskripsi()
+
+
+        console.log('<----- Soal Private Methods ----->');
+        // Soal 7 Private Methods
+        class Kalkulator {
+            constructor(Angka1, Angka2) {
+                this.Angka1 = Angka1,
+                    this.Angka2 = Angka2
+            }
+            #pribadi(Angka1, Angka2) {
+                return this.Angka1 + this.Angka2
+            }
+            publik(Angka1, Angka2) {
+                console.log(this.#pribadi());
+            }
+        }
+
+        class KalukalorCerdas extends Kalkulator {
+            #pribadi(Angka1, Angka2) {
+                return Angka1 * Angka2
+            }
+            publik(Angka1, Angka2) {
+                console.log(this.#pribadi());
+            }
+        }
+
+        const Penjumlahan = new Kalkulator(2, 3)
+        Penjumlahan.publik()
+
+        const Perkalian = new Kalkulator(5, 4)
+        Perkalian.publik()
+
+
+        console.log('<----- Soal Static Methods ----->');
+        // Soal 8 Static Methods
+        class Bentuk {
+            constructor(Num1, Num2) {
+                this.Num1 = Num1;
+                this.Num2 = Num2;
+            }
+            static hitungLuas(x) {
+                return null
+            }
+        }
+
+        class Segitiga extends Bentuk {
+            static hitungLuas(x) {
+                console.log(0.5 * x.Num1 * x.Num2);
+            }
+        }
+
+        class Lingkaran extends Bentuk {
+            static hitungLuas(x) {
+                let pi = Math.PI; // Mendapatkan nilai π dari objek Math di JavaScript
+                let radius = x.Num1;
+                let luas = pi * Math.pow(radius, 2);
+                console.log(luas);
+            }
+        }
+
+        const HasilSegitiga = new Segitiga(5, 3)
+        Segitiga.hitungLuas(HasilSegitiga);
+
+        const HasilLingkaran = new Lingkaran(3)
+        Lingkaran.hitungLuas(HasilLingkaran);
+
+
+        console.log('<----- Soal Static & Private Methods ----->');
+        // Soal 9 Static & Private Methods
+        class Car {
+            constructor(InformasiMobil, Harga, Tahun, Kondisi) {
+                this.InformasiMobil = InformasiMobil;
+                this.Harga = Harga;
+                this.Tahun = Tahun;
+                this.Kondisi = Kondisi;
+            }
+            static #infoMobil (x) {
+                return x.InformasiMobil + ' ' + x.Harga + ' ' +  x.Tahun + ' ' + x.Kondisi
+            }
+            tampilkanInfo() {
+                console.log(Car.#infoMobil(this));
+            }
+        }
+        const KeteranganMobil = new Car ('Toyota Supra', 'Rp.1.200.000.000', 1999, 'Masih Bugar')
+        KeteranganMobil.tampilkanInfo()
+
+    </script>
+
+</body>
+
+</html>

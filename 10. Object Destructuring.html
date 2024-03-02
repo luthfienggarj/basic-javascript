@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Destructuring</title>
+</head>
+
+<body>
+
+    <h1>Object Destructuring</h1>
+
+    <script>
+
+        /* 
+        Object Destructuring 
+        Berguna untuk melakukan Extract atau Penyederhanaan terhadap sebuah Object
+        */
+
+        // Contoh 1 Cara Sulit
+        const Film = {
+            filmName: 'Narnia',
+            releaseDate: '15 Mei 2008'
+        }
+        let { filmName: Fname, releaseDate: Rdate } = Film // // Destructuring (Cara Sulit)
+        console.log(Fname); // Nama Film
+        console.log(Rdate); // Tanggal Rilis
+
+        // Contoh 2 Simple
+        const Anime = {
+            animeName: 'Fairy Tail',
+            mc: 'Natsu Dragneel'
+        }
+        let { animeName, mc } = Anime
+        console.log(animeName); // Nama Anime
+        console.log(mc); // MC
+
+        // Object Literal Syntax Ekstension in ES6
+        // Simplified Syntax
+        let comedyAnime = 'One Piece'
+        let author = 'Oda'
+
+        const BestAnime = { comedyAnime, author } // Destructuring
+        console.log(BestAnime); // Log Object
+        console.log(BestAnime.comedyAnime); // Log Nama Anime
+
+
+
+        console.log('<-------- Nomor 1 -------->');
+        // Soal 1 (Pemula)
+        const pengguna = {
+            nama: 'Erza Scarlet',
+            email: 'Erzaskarleto@gmail.com',
+            alamat: 'Fiore'
+        }
+        let { nama, email, alamat } = pengguna // Destructuring
+        console.log(`Nama   : ${nama}`);
+        console.log(`Email  : ${email}`);
+        console.log(`Alamat : ${alamat}`);
+
+
+        console.log('<-------- Nomor 2 -------->');
+        // Soal 2 (Pemula)
+        const produk = {
+            nameProduct: 'Daily Prophet Newspaper',
+            harga: 5,
+            stok: 40
+        }
+        let { nameProduct, harga, stok } = produk // Destructuring
+        console.log(`Nama   : ${nameProduct}`);
+        console.log(`Harga  : ${harga}`);
+        console.log(`Stok   : ${stok}`);
+
+
+        console.log('<-------- Nomor 3 -------->');
+        // Soal 3 (Menengah)
+        const Transaksi = {
+            id: 1,
+            tanggal: '14 Sep 2021',
+            total: 'Rp. 150.000'
+        }
+        let { id, tanggal, total } = Transaksi
+        console.log(`Id       : ${id}`);
+        console.log(`Tanggal  : ${tanggal}`);
+        console.log(`Total    : ${total}`);
+
+
+        console.log('<-------- Nomor 4 -------->');
+        // Soal 4 (Menengah)
+        const CrewLuffy = {
+            namaCrew: 'Roronoa Zoro',
+            jabatan: 'Vice Captain',
+            gaji: 0,
+        }
+        let { namaCrew, jabatan, gaji } = CrewLuffy
+        console.log(`Nama Crew : ${namaCrew}`);
+        console.log(`Jabatan   : ${jabatan}`);
+        console.log(`Gaji      : ${gaji}`);
+
+
+        console.log('<-------- Nomor 5 -------->');
+        // Soal 5 (Lanjut)
+        const Buku = {
+            judul: 'Dr. Stone',
+            penulisBuku: 'Boichi, Riichiro Inagaki',
+            tahun: '6 March 2017',
+            jumlahHalaman: 120
+        }
+        let { judul, penulisBuku, tahun, jumlahHalaman } = Buku;
+        console.log(`Judul          : ${judul}`);
+        console.log(`Penulis        : ${penulisBuku}`);
+        console.log(`Tahun Terbit   : ${tahun}`);
+        console.log(`Jumlah Halaman : ${jumlahHalaman}`);
+
+
+        console.log('<-------- Nomor 6 -------->');
+        // Soal 6 (Lanjut)
+        const pesanan = {
+            IdPesanan: 1,
+            ProdukPesanan: 'Quail Stuffed With Risotto And Eggs: Brazen Youngster Style',
+            JumlahPesanan: '4',
+            Total: 956000,
+            Chef: 'Sōma Yukihira'
+        }
+        let { IdPesanan, ProdukPesanan, JumlahPesanan, Total, Chef } = pesanan
+        console.log(`Id             : ${IdPesanan}`);
+        console.log(`Produk Pesanan : ${ProdukPesanan}`);
+        console.log(`Jumlah Pesanan : ${JumlahPesanan}`);
+        console.log(`Total          : ${Total}`);
+        console.log(`Chef           : ${Chef}`);
+
+
+
+        function Fibonacci(n) {
+            if (n <= 0) {
+                return 0;
+            }
+
+            if (n <= 2) {
+                return 1;
+            }
+
+            return Fibonacci(n - 1) + Fibonacci(n - 2)
+        }
+
+        const InputFibo = prompt("Masukan Angka Positif !")
+
+        if (InputFibo <= 0 || isNaN(InputFibo)) {
+            alert("Masukan Angka Positif !")
+        } else {
+            for (let i = 1; i <= InputFibo; i++) {
+                console.log(Fibonacci(i));
+            }
+        }
+
+        console.log("<----- Ganjil Genap ----->");
+        function GanjilGenap(NumberOddEven) {
+            if (NumberOddEven % 2 === 0) {
+                return true
+            } else {
+                return false
+            }
+        }
+        console.log(GanjilGenap(10));
+
+
+    </script>
+
+</body>
+
+</html>

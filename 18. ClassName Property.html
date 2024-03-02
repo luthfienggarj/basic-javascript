@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClasName Property</title>
+</head>
+
+<body>
+
+    <h1>Class Name Property</h1>
+
+    <!---- Melihat ClassName Melalui JavaScript ---->
+    <h3 id="title" class="header-title">See Class Name</h3>
+    <script>
+        let SeeClass = document.getElementById("title");
+        console.log(SeeClass.className);
+        // Output : header-title
+    </script>
+
+
+    <!---- Mengganti ClassName Melalui JavaScript ---->
+    <h3 id="overWrite" class="first">Over Write</h3>
+    <script>
+
+        let OverWrite = document.getElementById("overWrite");
+        OverWrite.className = 'second'; // Jika Ingin Mengganti ClassName
+        console.log(OverWrite);
+        // Output : <h3 id="overWrite" class="second">
+
+        OverWrite.className += 'third'; // Jika Ingin Menggabungkan 2 Class
+        console.log(OverWrite);
+        // Output : <h3 id="overWrite" class="secondthird">
+    </script>
+
+
+    <!---- Add, Remove & Replace Menggunakan ClassList ---->
+    <h6 id="classList" class="first">Class List Example</h6>
+    <script>
+        let ClassList = document.getElementById("classList");
+
+        // Add
+        ClassList.classList.add('second', 'third');
+        console.log(ClassList);
+        // Output : <h6 id="classList" class="first second">
+
+        // Delete
+        ClassList.classList.remove('first');
+        console.log(ClassList);
+        // Output : <h6 id="classList" class="second third">
+
+        // Remove
+        // Deklarasikan 1 Class Yang Ingin Dihapus Terlebih Dahulu
+        ClassList.classList.replace('second', 'second2');
+        console.log(ClassList);
+        // Output : <h6 id="classList" class="second2 third">
+
+        // Contains (True / False)
+        console.log(ClassList.classList.contains('first'));
+        // Output : True
+
+        // Toogle
+        // Akan Menambahkan Class Jika Belum Ada, Jika sudah maka akan menhapus Class Sebelumnya.
+        ClassList.classList.toggle('second');
+        console.log(ClassList);
+        // Output : <h6 id="classList" class="second2 third second">
+    </script>
+
+
+</body>
+
+</html>

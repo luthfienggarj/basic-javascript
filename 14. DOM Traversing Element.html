@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Traversing</title>
+</head>
+
+<body>
+
+    <!---- Basic Traversing 
+    Adalah Hubungan Antara Satu Element/Tag Name 
+    Dengan Yang Lainnya. Mirip nth::child(1) Didalam CSS ---->
+
+
+    <!---- Basic Traversing ---->
+    <!---- Cara Mengetahui Mana Parent Element --->
+    <div class="title">
+        <p class="text">Basic DOM Traversing</p>
+    </div>
+    <script>
+        let ParentElement = document.querySelector('.text')
+        console.log(ParentElement.parentNode);
+        // Output : <div class="title">
+        // Menunjukan Bahwa Parent Element Adalah <div class="title">
+    </script>
+
+
+    <!---- First and Last Child Traversing ---->
+    <!---- Cara Mengambil Salah Satu Child Element --->
+    <div class="parent">
+        <p class="child">Child Element 1</p>
+        <p class="child">Child Element 2</p>
+        <p class="child">Child Element 3</p>
+        <p class="child">Child Element 4</p>
+        <p class="child">Child Element 5</p>
+        <p class="child">Child Element 6</p>
+    </div>
+    <script>
+        let GetChild = document.querySelector('.parent');
+        console.log(GetChild.firstElementChild);
+        // Output : <p class="child">Child Element 1</p>
+        console.log(GetChild.lastElementChild);
+        // Outpur : <p class="child">Child Element 4</p>
+
+        // Tapi Jika : 
+        console.log(GetChild.firstChild);
+        // Output : #text
+        // Karena masih Ada Jeda Spasi Antara Parent dan Child
+    </script>
+
+
+    <!---- Selecting Siblings Traversing ---->
+    <!--- Memilih Salah Satu Dari Child Yang Dipilih 
+        Bisa Sebelum dan Sesudahnya --->
+    <div class="main">
+        <p>First Child</p>
+        <p class="second">Second Child</p>
+        <p>Third Child</p>
+        <p>Fourth Child</p>
+    </div>
+    <script>
+        let Select = document.querySelector('.second');
+        console.log(Select.nextElementSibling);
+        // Output : <p>Third Child</p>
+        console.log(Select.previousElementSibling);
+        // Output : <p>First Child</p>
+    </script>
+
+</body>
+
+</html>

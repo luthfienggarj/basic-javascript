@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data  Types & Scope</title>
+
+    <script>
+        // Data Types Var, Const & Let
+
+        var a = 20;
+        var b = 30;
+        console.log(a+b);
+
+        /* ----------------------------- */
+
+        // Global Scope
+        /* Variable ada di luar Function */
+        const luthfi = "Suka Makan Bayam"
+
+        function sayuran() {
+            console.log(luthfi)
+        }
+        sayuran();
+
+        /* ----------------------------- */
+
+        // Function Scope
+        /* Variable ada di dalam Funtion */
+
+        function buah() {
+            const Boy = "Suka Makan Apel"
+            console.log(Boy)
+        }
+        buah();
+
+        /* ----------------------------- */
+
+        // Block Scope
+        /* Di Dalam Function ada Kurung Kurawa { } */
+
+        function mobil() {
+            
+            const GTR = "Mobil Kesukaan Luthfi"
+            const Mercedes = "Mobil Kepunyaan Luthfi"
+            
+            if (car = Mercedes) {
+                console.log(car)
+            } else {
+                console.log("Bukan Mobil Kesukaan Luthfi")
+            }
+        }
+        mobil()
+
+        /* ----------------------------- */
+
+        const latihan = "<----------Di Bawah Ini Adalah Latihan Soal---------->"
+        console.log(latihan)
+
+        /* ----------------------------- */
+
+
+        // Soal 1 Data Types Mahasiswa
+
+        const umur = "21";
+        const nama = "Enggar"
+        const ApakahMahasiwa = true;
+
+        console.log(umur, nama, ApakahMahasiwa);
+
+
+        // Soal 2 Data Types String, Numerik dan Boolean
+
+        const angka = 99;
+        const teks = "Ini String";
+        const ApakahBenar = false;
+
+        console.log(angka, teks, ApakahBenar);
+
+
+        // Soal 3 Global Scope 
+
+        const panjang = 12;
+        const lebar = 3;
+
+        function luasPersegiPanjang() {
+            console.log(panjang * lebar)
+        }
+        luasPersegiPanjang()
+        
+
+        // Soal 4 Global Scope (Parameter)
+
+        const x = 10;
+
+        function TambahkanNilai(y) {
+            console.log(x+y)
+            return
+        }
+
+        /* Jika Menggunakan Sintaks Ini maka hasil nya Undefined */
+        var y = 5;
+        console.log(TambahkanNilai(y));
+
+        /* Jika Menggunakan Sintaks Ini maka hasil nya sama yaitu 10 */
+        console.log(x)
+        
+
+
+        // Soal 5 Global Scope (Perubahan Hasil)
+        
+        var Cars = "Toyota";
+
+        function UbahMobil() {
+            Cars = "Honda"
+        }
+        UbahMobil();
+        console.log(Cars)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

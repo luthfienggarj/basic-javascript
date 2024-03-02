@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS CallBack Function</title>
+</head>
+
+<body>
+
+    <h1>CallBack</h1>
+
+    <script>
+
+        // Callback Function
+        // Menggunakan 2 Function dan memanggil ke 2 nya
+
+        // Simple Example
+        function first(firstExample) {
+            console.log(firstExample);
+        }
+
+        function second(a, b, CallBack) {
+            let result = a + b;
+            CallBack(result)
+        }
+        second(20, 55, first) // Output : 75
+
+
+        // Anonymous Function
+        // Tidak memiliki nama function
+
+        // Example Code
+        // Kode ini tidak berfungsi karena tidak memiliki nama Function
+        /* function (params) {
+            return 
+        } */
+
+        // Simple Code
+        // Cara Menangani kode tersebut
+        let Anony = function (num1, num2) {
+            return num1 + num2;
+        }
+        console.log(Anony(80, 85));
+
+        // Another Simple Code
+        let Price = function (barang1, barang2) {
+            if (barang1 > barang2) {
+                return true;
+            } else {
+                return false
+            }
+        }
+        console.log(Price(200, 300));
+
+        // Another Simple Code
+        (
+            function () {
+                console.log("Hello Javascript");
+            })();
+
+        // Case for Anonymus Function (Odd or Even)
+        let GanjilGenap = function (Angka) {
+            if (Angka % 2 == 0) {
+                return + true
+            } else {
+                return false
+            }
+        }
+        console.log(GanjilGenap(5));
+
+        // Case for anonymus Function (Set Time Out)
+        setTimeout(function () {
+            console.log("Waktu Loading 2 Detik");
+        }, 2000);
+
+
+
+        // Recursive Function
+        /* Merupakan Function yang memanggil dirinya sendiri */
+        // Logika : Pemanggilan 2 Kali terhadap Function
+        // Tips : Bisa gunakan If untuk menghentikan pemanggilan Infinite
+
+        // Simple Code
+        function SimpleNumber(num) {
+            console.log(num);
+            num--
+            if (num >= 0) {
+                SimpleNumber(num)
+            }
+        }
+        SimpleNumber(5);
+
+
+        /* ----- Soal Callback Function ----- */
+        
+        // Soal 1 (Mid) (Perhitungan Nilai)
+        // function Array(Nilai)
+        function hitungNilai(nilaiTugas, callback) {
+            const NilaiSiswa = nilaiTugas.reduce((Hitung, Panjang) => Hitung + Panjang, 0)
+            const RataRata= NilaiSiswa / nilaiTugas.length
+            callback(RataRata);
+        }
+
+        function Keterangan(nilaiRataRata) {
+            if (nilaiRataRata >= 70) {
+                console.log("Nilai Bagus");
+            } else {
+                console.log("Nilai Kurang Baik");
+            }
+        }
+        const nilaiTugas = [87, 90, 87, 66, 87, 59]
+        hitungNilai(nilaiTugas, Keterangan)
+
+        // Soal 2 Function (Adv) (Total Belanja Dan Diskon)
+        function HitungTotalBelanja(hargaProduk, callback) {
+            const HitungPertama = hargaProduk.reduce((belanjasatu, belanjadua) => belanjasatu + belanjadua, 0)
+            const TotalBelanja = HitungPertama + hargaProduk.length
+            callback(TotalBelanja)
+        }
+
+        function totalDiskon(SyaratDiskon) {
+            if (SyaratDiskon >= 10000) {
+                console.log("Anda Mendapatkan Diskon 10%");
+            } else {
+                console.log("Anda Tidak Mendapatkan Diskon");
+            }
+        }
+        const hargaProduk = [17000]
+        HitungTotalBelanja(hargaProduk, totalDiskon)
+
+
+        /* ----- Soal Anonymous Function ----- */
+        
+        // Soal 1 (Mid) (Sorting Tugas)
+        
+        // Sorting Numerik
+        let SortNumerik = function (SortingTugas) {
+            const TugasHarian = [5, 9, 8, 7, 4, 1]
+            console.log(TugasHarian.sort());
+        }
+        SortNumerik();
+
+        // Sorting String
+        let SortString = function (SortingTugas) {
+            const TugasHarian = ["Indonesia", "Jepang", "Jerman", "Afganistan"]
+            console.log(TugasHarian.sort());
+        }
+        SortString();
+
+        // Soal 2 (Beginner) (Perhitungan Angka)
+        let PerhitunganAngka = function (AngkaSatu, AngkaDua) {
+            return AngkaSatu * AngkaDua
+        }
+        console.log(PerhitunganAngka(5, 8));
+
+        // Soal 3 (Beginner) (Average Grade)
+        let AverageGrade = function (Mtk, Ipa, Ips) {
+            let Grade = (Mtk + Ipa + Ips) / 3
+            let GradeLetter;
+
+            if (Grade >= 90) {
+                GradeLetter = 'A'
+            } else if (Grade >= 80){
+                GradeLetter = 'B'
+            } else if (Grade >= 70){
+                GradeLetter = 'C'
+            } else if (Grade >= 60){
+                GradeLetter = 'D'
+            } else if (Grade <=  50){
+                GradeLetter = 'E'
+            }
+            return `Average : ${Grade.toFixed(0)}, Letter : ${GradeLetter}`
+        }
+        console.log(AverageGrade(70, 88, 100));
+
+
+        /* ----- Soal Recursive Function ----- */
+
+        // Deret Fibonacci
+        function Fibonacci (n) {
+            if (n < 2) {
+                return n
+            } else {
+                return Fibonacci(n-1) + Fibonacci(n-2)
+            }
+        }
+
+        const InputNilai = prompt("Masukan Nilai : ")
+        if (InputNilai < 0) {
+            console.log("Masukan Angka Positif !");
+        } else {
+            for (let i = 0; i < InputNilai; i++) {
+                console.log(Fibonacci(i));
+            }
+        }
+
+        // Deret Faktorial
+
+        
+
+
+        
+
+        
+        
+
+    </script>
+
+</body>
+
+</html>

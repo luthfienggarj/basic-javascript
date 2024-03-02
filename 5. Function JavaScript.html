@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function JavaScript</title>
+</head>
+
+<body style="background: #63e5ff;">
+
+
+
+
+    <script>
+
+        /* 
+        JavaScript Function :
+        1. Function
+        2. Parameters & Arguments
+        3. Default Function
+        4. Return Function
+
+
+        //Function
+        function namaOrang () {
+            console.log("Luthfi")
+        }
+        namaOrang() //Ketika Menggunakan Function Harus mendeklarasikannya lagi dibawah
+        Output : Luthfi
+
+
+        //Function, Parameters & Arguments
+        function namaDepanBelakang (firstname, lastname) {
+            console.log("Nama dia adalah" + firstname + lastname)
+        }
+        namaDepanBelakang("Luthfi", "Juang")
+        Output : Luthfi Juang
+        Note : firstname dan lastname adalah parameter dan keduanya harus di deklarasikan lagi dibagian bawah
+
+        
+        //Function Default
+        function ContohDefault (x, y) {
+            console.log(x + y)
+        }
+        ContohDefault(10, 15)
+        Output : 25
+
+        Contoh Soal lainnya Default Function
+        function greet(nama = "Pengunjung") {
+            return "Halo, " + nama + "!";
+        }
+
+        // Memanggil fungsi tanpa memberikan nilai parameter nama
+        const pesanSapaan = greet("Admin");
+
+        // Menampilkan pesan sapaan
+        console.log(pesanSapaan); // Output: "Halo, Pengunjung!"
+
+        // Note : Const dan console.log menimpa parameter nama = "Pengunjung" Sehingga bisa mengganti nama awal bernama pengunjung
+        // Note : Pastikan di dalam function memberikan keterangan yang tidak ingin ditampikan dan diluar function yang ingin ditampilkan
+
+
+
+        //Function Return
+        function ContohReturn (a, b) {
+            return a + b //Return diletakan di dalam function
+        }
+        let HasilReturn = a + b;
+        console.log("Hasil nya adalah : " HasilReturn)
+
+        */
+
+        // Soal 1 Function (Beginner) (Pemanggilan Function)
+        function greeting() {
+            console.log("Selamat datang di dunia JavaScript!");
+        }
+        greeting();
+
+        // Soal 2 Parameters & Arguments (Beginner) (Perhitungan)
+        function calculateRectangleArea(panjang, lebar) {
+            console.log("Hasil Luas Persegi : " + (panjang * lebar));
+        }
+        calculateRectangleArea(5, 8);
+
+
+        // Soal 3 Function Default (Beginner) (2 Catatan Berbeda)
+        function tambahCatatan(tanggal = null, catatan = null) {
+            if (tanggal === null && catatan === null) {
+                return "Masukkan tanggal dan catatan."
+            } else if (tanggal !== null && catatan === null) {
+                return "Tidak ada catatan " + tanggal + "."
+            } else {
+                return "Tanggal " + tanggal + " : " + catatan
+            }
+        }
+
+        const catatan1 = tambahCatatan();
+        const catatan2 = tambahCatatan("30 Januari 2023", "Joget");
+
+        console.log(catatan1);
+        console.log(catatan2);
+
+
+        // Soal 4 Function Return (Beginner) (2 Catatan Berbeda)
+        function addNumbers(a, b) {
+            return console.log(a + b);
+        }
+        addNumbers(10, 5)
+
+        // Soal 5 Function (Mid) (Perhitungan Pajak)
+        function hitungPajak(pendapatanTahunan, statusPernikahan) {
+
+            if (pendapatanTahunan < 50000 && statusPernikahan === "Kawin") {
+                var pendapatanPertama = pendapatanTahunan * 0.9
+                return pendapatanTahunan - pendapatanPertama
+
+            } else if (pendapatanTahunan < 30000 && statusPernikahan === "Belum Kawin") {
+                var pendapatanPertama = pendapatanTahunan * 0.95
+                return pendapatanTahunan - pendapatanPertama
+
+            } else {
+                var pendapatanPertama = pendapatanTahunan * 0.8
+                return pendapatanTahunan - pendapatanPertama
+            }
+        }
+
+        const TotalPajakPenduduk = hitungPajak(2700000, "Belum Kawin")
+        console.log("Total Pajak : " + TotalPajakPenduduk);
+
+        // Soal 6 Function Parameters & Arguments (Mid) (Inventaris)
+        function tambahBarang(daftarBarang, namaBarang, jumlahBarang) {
+            // Mencari apakah namaBarang sudah ada dalam daftarBarang
+            const BarangGudang = daftarBarang.find(item => item.nama === namaBarang)
+
+            if (BarangGudang !== undefined) {
+                // Jika namaBarang sudah ada, tambahkan jumlahBarang ke jumlah yang sudah ada
+                BarangGudang.jumlah += jumlahBarang
+            } else {
+                // Jika namaBarang belum ada, tambahkan barang baru ke daftarBarang
+                daftarBarang.push({ nama: namaBarang, jumlah: jumlahBarang })
+            }
+            return daftarBarang
+        }
+
+        // Contoh penggunaan fungsi
+        const Inventaris = [
+            { nama: "Semen", jumlah: 40 },
+            { nama: "Cat Nippon", jumlah: 4 }
+        ]
+
+        // Menambahkan barang ke inventaris
+        tambahBarang(Inventaris, "Semen", 60)
+        tambahBarang(Inventaris, "Kuda Terbang", 20)
+
+        // Memanggil Inventaris
+        console.log(Inventaris);
+
+
+        // Soal 7 Function Return (Mid) (Hitung Nilai Mahasiswa)
+        function hitungNilaiAkhir(nilaiTugas, nilaiUjian, nilaiProyek) {
+            return nilaiAkhir = (0.3 * nilaiTugas) + (0.4 * nilaiUjian) + (0.3 * nilaiProyek)
+        }
+        const hasilPenilaian = hitungNilaiAkhir(80, 80, 95);
+        console.log("Matkul Dasar Pemrograman : " + hasilPenilaian);
+
+        // Soal 8 Function Recursive (Mid) (Faktorial)
+        function FaktorialAngka(n) {
+            console.log(n); // log Terlebih Dahulu
+            let BatasAngka = n - 1; // Lompat Angka
+            if (BatasAngka > 1) { // Batas Angka
+                FaktorialAngka(BatasAngka); // Eksekusi
+            }
+        }
+        FaktorialAngka(4) // Input Angka
+
+        // Soal 9 Function (Adv) (Menghitung Estimasti Waktu)
+        function hitungEstimasiWaktu(jumlahTugas, durasiTugas, tingkatKesulitan) {
+            return (jumlahTugas * durasiTugas) / tingkatKesulitan
+        }
+        const hasilEstimasi = hitungEstimasiWaktu(4, 24, 5)
+        console.log(hasilEstimasi);
+
+        // Soal 10 Function (Adv) (Mencari Barang Di Gudang)
+        function FindingGoods(ListGoods, NamesGoods) {
+            ListGoods = [
+                { Names: "Samsung Galaxy", prices: "Rp. 2.500.000" },
+                { Names: "Vivo" },
+                { Names: "Iphone" }
+            ]
+
+            const FoundGoods = ListGoods.find((item) => {
+                return item.Names === "Samsung Galaxy"
+            })
+            console.log(FoundGoods);
+        }
+        FindingGoods();
+
+
+        // Soal 11 Function (Adv) (Recursive Fibonnaci)
+
+        function CountFibonacci (nn) {
+            if (nn <= 2) {
+                return nn
+            } else {
+                return CountFibonacci(nn -1 ) + (nn - 2);
+            }
+        }
+
+        const CountingFibo = prompt("Masukan Angka Positif !");
+
+        if (CountingFibo < 0) {
+            console.log("Masukan Angka Positif !");
+        } else {
+            for (let i = 0; i < CountingFibo; i++) {
+                console.log(CountFibonacci(i));
+            }
+        }
+
+        // Soal 12 Function (Adv) (Closure Keuangan)
+        function SaldoPengguna (buatPembayaran) {
+            let saldo = buatPembayaran;
+
+            function BuatTransaksi(jumlah) {
+                if (jumlah > saldo) {
+                    console.log('Saldo Anda Kurang !');
+                } else {
+                    saldo -= jumlah
+                    console.log(`Transaksi Anda Berjumlah ${jumlah}, Sisa Saldo Anda ${saldo}`);
+                }
+            }
+            return BuatTransaksi;
+        }
+        const SaldoAkhirPengguna = SaldoPengguna(1000);
+        SaldoAkhirPengguna(500);
+
+        function Person(first, last) {
+            console.log(first + '' + last);
+        }
+        Person('Luthfi ', 'Enggar')
+
+        const Person2 = {
+            firstName: 'Luthfi',
+            lastName: 'Juang'
+        }
+        let {firstName, lastName} = Person2
+        console.log(`First Name : ${firstName}`);
+        console.log(`Last Name : ${lastName}`);
+
+
+        
+        
+
+
+
+    </script>
+
+</body>
+
+</html>

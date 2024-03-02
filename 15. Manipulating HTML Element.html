@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulating HTML Element</title>
+</head>
+
+<body>
+
+    <!---- Manipulating HTML Element ---->
+    <!---- Memanipulasi Elemen HTML Melalui JavaScript ---->
+
+
+    <!--- CreateElement() --->
+    <!--- Membuat Elemen Baru --->
+    <h3>Create Element ()</h3>
+    <script>
+        let div = document.createElement("div"); // console.log(div); Output : <div></div>
+        div.innerHTML = "<p>Hello Luthfi</p>" // console.log(div); Output : <div><p>Hello Luthfi</p></div>
+        document.body.appendChild(div) // Jika Menambahkan ini dan log maka Output seperti pada tulisan dibawah
+        console.log(div);
+        // Output : Hello Luthfi
+    </script>
+    <br>
+
+
+
+    <!---- AppendChild() ---->
+    <!--- Berguna untuk menampilkan script ke dalam tampilan HTML pada web --->
+    <h3>AppendChild ()</h3>
+    <ul id="menu">
+        <li>Home</li>
+        <li>About</li>
+        <li>Blog</li>
+        <li>Project</li>
+    </ul>
+    <script>
+        let menu = document.getElementById("menu");
+        let add = document.createElement("li");
+        add.innerHTML = "Contact";
+        menu.appendChild(add);
+        // Output : Contact
+    </script>
+    <script>
+        let menu2 = document.getElementById("menu");
+        let add2 = document.createElement("li")
+        add2.innerHTML = "Login"
+        menu2.appendChild(add2)
+        // Output : Login
+    </script>
+    <br>
+
+
+    <!---- Text Context ---->
+    <!---- Menampilkan Context Pada Console Tab---->
+    <h3>TextContext</h3>
+    <ul id="bar">
+        <li>Beranda</li>
+        <li style="display: none;">Tentang</li>
+    </ul>
+    <script>
+        let bar = document.getElementById("bar");
+        console.log(bar.textContent);
+        // Output : Beranda Tentang (Menampilkan Semua Context Walau Ada Diplay: none;)
+        // console.log(bar.innerText);
+        // Output : Beranda (Hanya 1 Karena Ada Display: none;)
+        // bar.textContent = "Hello"
+        // Output : Hello (Pada Website, Karena Semua Tertiban)
+    </script>
+    <br>
+
+
+    <!---- Inner HTML ---->
+    <!---- Menampilkan Script Pada Web ---->
+    <h3>Inner HTML</h3>
+    <div id="container">
+        <p>Lorem</p>
+    </div>
+    <script>
+        let cont = document.getElementById("container");
+        cont.innerHTML = "<b>Mauantap !</b>"
+        // Output : Mauantap !
+    </script>
+    <br>
+
+
+    <!---- After() Methods ---->
+    <!---- Menambahkan Element Sesudah, Pada Web ---->
+    <h3>After Methods ()</h3>
+    <div id="containerAfter">
+        <p>Lorem</p>
+    </div>
+    <script>
+        let After = document.getElementById("containerAfter");
+        After.after("Hi")
+        // Output : Hi
+    </script>
+    <br>
+    <br>
+
+
+    <!---- Append() Methods ---->
+    <!---- menyisipkan sekumpulan objek Node atau objek string setelah anak terakhir Elemen. ---->
+    <h3>Append Methods ()</h3>
+    <div id="containerAppend">
+        <p>Lorem</p>
+    </div>
+    <script>
+        let Append = document.getElementById("containerAppend");
+        Append.append("Join Lah");
+        // Output : Join Lah
+    </script>
+    <br>
+    <br>
+
+
+    <!---- Prepend() Methods ---->
+    <!---- Menyisipkan objek sebelum anak pertama dari node induk. ---->
+    <h3>Prepend Methods ()</h3>
+    <div id="containerPrepend">
+        <p>Lorem</p>
+    </div>
+    <script>
+        let Prepend = document.getElementById("containerPrepend");
+        Prepend.prepend("Join Lah");
+        // Output : Join Lah (Berada Diatas Lorem)
+    </script>
+    <br>
+
+
+    <!---- InsertAdjacentHTML() Methods ---->
+    <!---- Menyisipkan objek Kemanapun Ke Lokasi Yang Di Inginkan. ---->
+    <h3>InsertAdjacentHTML Methods ()</h3>
+    <ul id="Insert">
+        <li>Home</li>
+        <li>About</li>
+        <li>Blog</li>
+    </ul>
+    <script>
+        let Insert = document.getElementById("Insert");
+        Insert.insertAdjacentHTML("beforeend", "<li><b>Before End</b></li>") // BeforeEnd
+        Insert.insertAdjacentHTML("beforebegin", "<li><b>Before Begin</b></li>") // BeforeBegin
+        Insert.insertAdjacentHTML("afterbegin", "<li><b>After Begin</b></li>") // AfterEnd
+        Insert.insertAdjacentHTML("afterend", "<li><b>After End</b></li>") // AfterEnd
+    </script>
+    <br>
+
+
+
+    <!---- Replace Child() Methods ---->
+    <!---- Mengganti Elemen Child Dengan Text Yang Baru. ---->
+    <h3>ReplaceChild Methods ()</h3>
+    <ul id="Parent">
+        <li>Home</li>
+        <li>About</li>
+        <li>Blog</li>
+    </ul>
+    <script>
+        let NewText = document.createTextNode("Replace")
+        let Parent = document.getElementById("Parent").children[0];
+        Parent.replaceChild(NewText, Parent.childNodes[0])
+        /*
+        Output : 
+        Replace
+        About
+        Blog
+        */
+    </script><br>
+
+
+    <!---- CloneElement() Methods ---->
+    <!---- Duplikasi Elemen Yang Dipilih. ---->
+    <h3>CloneElement Methods ()</h3>
+    <ul id="Clone">
+        <li>Tomat</li>
+        <li>Wortel</li>
+    </ul>
+    <script>
+        let Vegetables = document.getElementById("Clone");
+        let Cloning = Vegetables.cloneNode(true); // Jika True Maka Menampilkan semua <li> jika false dan kosong hanya <ul>
+        console.log(Cloning);
+    </script><br>
+
+
+    <!---- RemoveElement() Methods ---->
+    <!---- Menghapus Elemen Yang Dipilih. ---->
+    <h3>RemoveElement Methods ()</h3>
+    <ul id="remove">
+        <li>Mangga</li>
+        <li>Jambu</li>
+    </ul>
+    <script>
+        let Fruits = document.getElementById("remove");
+        Fruits.removeChild(Fruits.lastElementChild)
+        // Output : Mangga
+    </script><br>
+
+
+    <!---- InsertBefore() Methods ---->
+    <!---- Menyisipkan Elemen Sebelum Target Elemen Yang Dipilih. ---->
+    <h3>InsertBefore Methods ()</h3>
+    <ul id="insert">
+        <li>John</li>
+        <li>Phill</li>
+    </ul>
+    <script>
+        let Person = document.getElementById("insert");
+        let Create = document.createElement("li");
+        Create.textContent = "Luna";
+        // Menyisipkan "Luna" Dibawah John
+        Person.insertBefore(Create, Person.children[1]);
+    </script>
+
+
+
+</body>
+
+</html>

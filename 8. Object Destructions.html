@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Constructors</title>
+</head>
+
+<body>
+
+    <script>
+
+        // Object Constructors (Selalu Gunakan Function, This, (=), (.) )
+        /* Sekumpulan Object menggunakan Function dan Parameter yang di deklarasikan dan di input di bagian bawah */
+
+        // Contoh Simple
+        function Employee() {
+            this.name = 'Luthfi',
+                this.gaji = 10000000,
+                this.perusahaan = 'Google Indonesia'
+        }
+        const Employee1 = new Employee();
+        console.log(Employee1);
+
+        // Contoh Simple Dengan Input Sendiri dibagian bawah
+        function Barang(elektronik, pakaian, kendaraan) {
+            this.namaBarang = elektronik,
+                this.namaPakaian = pakaian,
+                this.namaKendaraan = kendaraan
+        }
+        const Barang1 = new Barang("IPhone", "Rolex", "Supra");
+        console.log(Barang1);
+
+        // Contoh Lainnya
+        function BahasaPemrograman(BahasaMudah, BahasaMenengah, BahasaSulit) {
+            this.BahasaPertama = BahasaMudah,
+                this.BahasaKedua = BahasaMenengah,
+                this.BahasaKetiga = BahasaSulit
+        }
+        const TingkatKesulitan = new BahasaPemrograman('Python', 'Typescript', 'Java');
+        console.log(TingkatKesulitan);
+
+        // Cara Menambahkan Object diluar Function
+        function Perusahaan(Indonesia, Philipines, USA) {
+            this.NegaraIndonesia = Indonesia,
+                this.NegaraPhilipines = Philipines,
+                this.NegaraAmerika = USA
+        }
+        const PerusahaanBesar = new Perusahaan('BCA', 'CyberBreaker', 'Google')
+        PerusahaanBesar.NegaraSwiss = 'Fifa'
+        console.log(PerusahaanBesar);
+
+        // Cara Menyatukan beberapa object menjadi satu
+        function Mahasiswa(namadepan, namabelakang) {
+            this.firstName = namadepan,
+                this.lastName = namabelakang,
+                this.getFullName = function () {
+                    return this.firstName + ' ' + this.lastName;
+                }
+        }
+        const BiodataMahasiswa = new Mahasiswa('Enggar', 'Juang')
+        console.log(BiodataMahasiswa.getFullName());
+
+
+        // Soal 1 (Pemula) (Nama Mahasiswa)
+        function MahasiswaMercu(nama, nim, jurusan) {
+            this.namaMahasiswa = nama
+            this.nimMahasiswa = nim
+            this.jurusanMahasiswa = jurusan
+        }
+        const BiodataMahasiswaMercu = new MahasiswaMercu('Luthfi Enggar Juang', '41820010068', 'Sistem Informasi');
+        console.log(`Nama : ${BiodataMahasiswaMercu.namaMahasiswa}`);
+        console.log(`Nama : ${BiodataMahasiswaMercu.nimMahasiswa}`);
+        console.log(`Nama : ${BiodataMahasiswaMercu.jurusanMahasiswa}`);
+
+        // Soal 2 (Pemula) (Mobil)
+        function MobilLuthfi(merk, tahun, harga) {
+            this.merkMobil = merk,
+                this.tahunMobil = tahun,
+                this.hargaMobil = harga
+        }
+        const DetailMobil = new MobilLuthfi('Nissan GTR Skyline', '1999', 'Rp. 2.000.000.000')
+        console.log(`Merk Mobil : ${DetailMobil.merkMobil}`);
+        console.log(`Tahun Mobil : ${DetailMobil.tahunMobil}`);
+        console.log(`Harga Mobil : ${DetailMobil.hargaMobil}`);
+
+        // Pembatas
+        console.log('<----------No 3----------->');
+
+        // Soal 3 (Pemula) (Data Pegawai)
+        function SistemInformasiPegawai(nama, nip, jabatan, gaji) {
+            this.namaPegawai = nama,
+                this.nipPegawai = nip,
+                this.jabatan = jabatan,
+                this.gaji = gaji,
+                this.identitas = function tampilkanInfo() {
+                    console.log(`Nama : ${this.namaPegawai}`);
+                    console.log(`NIP : ${this.nipPegawai}`);
+                    console.log(`Jabatan : ${this.jabatan}`);
+                    console.log(`Gaji : ${this.gaji}`);
+                }
+        }
+        const IdentitasLengkapVanda = new SistemInformasiPegawai('Vanda Margraf', 5454, 'Senior Aktris', 290000000)
+        const IdentitasLengkapLuthfi = new SistemInformasiPegawai('Luthfi Enggar Juang', 8484, 'Software Engineer', 190000000)
+
+        IdentitasLengkapVanda.identitas();
+        IdentitasLengkapLuthfi.identitas();
+
+        const TotalGaji = IdentitasLengkapVanda.gaji + IdentitasLengkapLuthfi.gaji
+        console.log(`Total Gaji : Rp. ${TotalGaji}`);
+
+        // Pembatas
+        console.log('<----------No 4----------->');
+
+        function Produk(nama, harga, stok, deskripsi) {
+            this.namaProduk = nama
+            this.hargaProduk = harga
+            this.stokProduk = stok
+            this.deskripsiProduk = deskripsi
+            this.tampilkanInfo = function () {
+                console.log(`Nama Produk : ${this.namaProduk}`);
+                console.log(`Harga Produk : ${this.hargaProduk}`);
+                console.log(`Stok Produk : ${this.stokProduk}`);
+                console.log(`Deskripsi Produk : ${this.deskripsiProduk}`);
+            }
+        }
+        const Produk1 = new Produk('Google Play Store', 500, 'Unlimited', 'Download Aplikasi');
+        const Produk2 = new Produk('Google Play Games', 600, 'Unlimited', 'Download Games');
+
+        Produk1.tampilkanInfo();
+        Produk2.tampilkanInfo();
+
+        const HargaProdukGoogle = Produk1.hargaProduk + Produk2.hargaProduk;
+        console.log(HargaProdukGoogle);
+
+        // Pembatas
+        console.log('<----------No 5----------->');
+
+
+        // Soal 5 (Menengah) (Tambah Data Karyawan)
+
+        function Karyawan(nama, jabatan, gaji, masaKerja) {
+            this.nama = nama;
+            this.jabatan = jabatan;
+            this.gaji = gaji;
+            this.masaKerja = masaKerja;
+        }
+
+        function Perusahaan(nama) {
+            this.nama = nama;
+            this.karyawan = [];
+
+            this.tambahKaryawan = function (karyawan) {
+                this.karyawan.push(karyawan);
+            };
+        }
+
+        // Menamai Perusahaan
+        const perusahaan = new Perusahaan("ABC Corp");
+
+        // Memasukan Setiap Karyawan
+        const karyawan1 = new Karyawan("John Doe", "Manager", 10000000, 5);
+        const karyawan2 = new Karyawan("Jane Smith", "Staf", 5000000, 2);
+        const karyawan3 = new Karyawan("Bob Johnson", "Supervisor", 8000000, 4);
+
+        // Menambahkan Nama Karyawan ke tambahKaryawan
+        perusahaan.tambahKaryawan(karyawan1);
+        perusahaan.tambahKaryawan(karyawan2);
+        perusahaan.tambahKaryawan(karyawan3);
+
+        // Log Pada nama perusahaan
+        console.log(`Perusahaan: ${perusahaan.nama}`);
+
+        // Menampilkan satu per satu dari nama Karyawan yang sudah dimasukan
+        perusahaan.karyawan.forEach((karyawan) => {
+            console.log(`Nama: ${karyawan.nama}`);
+            console.log(`Jabatan: ${karyawan.jabatan}`);
+            console.log(`Gaji: Rp ${karyawan.gaji.toLocaleString()}`);
+            console.log(`Masa Kerja: ${karyawan.masaKerja} tahun`);
+        });
+
+        // Menghitung Gaji
+        const totalGaji = perusahaan.karyawan.reduce((total, karyawan) => total + karyawan.gaji, 0);
+        console.log(`Total Gaji yang Harus Dibayar oleh Perusahaan: Rp ${totalGaji.toLocaleString()}`);
+
+
+        // Pembatas
+        console.log('<----------No 6----------->');
+
+        // Soal 6 (Menengah) (Tim Sepakbola)
+        function pemain(nama, posisi, nomorPunggung, umur) {
+            this.namaPemain = nama,
+                this.posisiPemain = posisi,
+                this.nomorPunggungPemain = nomorPunggung,
+                this.umurPemain = umur
+        }
+
+        function TimOlahraga(NamaTim, pemain) {
+            this.NamaTim = NamaTim,
+                this.pemain = [],
+                this.tambahPemain = function (pemain) {
+                    this.pemain.push(pemain)
+                }
+        }
+
+        // Menambahkan Nama Tim
+        const NamaTimSepakBola = new TimOlahraga('Liverpool FC');
+
+        // Menambahkan Pemain Pertama
+        const Pemain1 = new pemain('Firmino', 'Penyerang', '9', '30');
+
+        // Memasukan Pemain1 kedalam Object TimOlahraga
+        NamaTimSepakBola.tambahPemain(Pemain1);
+
+        // Log Nama Tim
+        console.log(`Nama Tim : ${NamaTimSepakBola.NamaTim}`);
+
+        // For Each Setiap Nama Pemain Yang Masuk
+        NamaTimSepakBola.pemain.forEach((TimOlahraga) => {
+            console.log(`Nama Pemain : ${TimOlahraga.namaPemain}`);
+            console.log(`Nama Pemain : ${TimOlahraga.posisiPemain}`);
+            console.log(`Nama Pemain : ${TimOlahraga.nomorPunggungPemain}`);
+            console.log(`Nama Pemain : ${TimOlahraga.umurPemain}`);
+        });
+
+        // Hitung Jumlah Pemain Dengan For Each Diatas ( NamaTimSepakBola.pemain )
+        const JumlahPemain = NamaTimSepakBola.pemain.length;
+        console.log(`Jumlah Pemain : ${JumlahPemain}`);
+
+
+        // Pembatas
+        console.log('<----------No 7----------->');
+
+        function Buku(judul, penulis, tahunTerbit, jumlahHalaman) {
+            this.Judulbuku = judul;
+            this.Penulisbuku = penulis;
+            this.TahunterbitBuku = tahunTerbit;
+            this.jumlahHalamanBuku = jumlahHalaman;
+        }
+
+        function Perpustakaan(namaPerpustakaan) {
+            this.namaPerpustakaan = namaPerpustakaan;
+            this.katalog = [];
+            this.tambahBuku = function (buku) {
+                this.katalog.push(buku);
+            };
+        }
+
+        // Nama Perpustakaan
+        const namaPerpustakaanKampus = new Perpustakaan('Perpustakaan UMB');
+
+        // Menambahkan Buku
+        const buku1 = new Buku('LDR', 'Sarah', '2015', '289 Halaman');
+
+        // Masukkan Buku ke dalam Array Katalog
+        namaPerpustakaanKampus.tambahBuku(buku1);
+
+        // Loop untuk Setiap Buku dalam Katalog
+        namaPerpustakaanKampus.katalog.forEach((buku) => {
+            console.log(`Nama Buku : ${buku.Judulbuku}`);
+            console.log(`Penulis Buku : ${buku.Penulisbuku}`);
+            console.log(`Tahun Terbit Buku : ${buku.TahunterbitBuku}`);
+            console.log(`Jumlah Halaman Buku : ${buku.jumlahHalamanBuku}`);
+        });
+
+        // Jumlah Buku dalam Katalog
+        const jumlahBuku = namaPerpustakaanKampus.katalog.length;
+        console.log(`Jumlah Buku : ${jumlahBuku}`);
+
+
+        // Pembatas
+        console.log('<----------No 8----------->');
+
+        // Soal 8 (Advance) (Nama Pegawai)    
+        function IdentitasPegawai(nama, email, alamat) {
+            this.NamaPegawai = nama,
+                this.EmailPegawai = email,
+                this.AlamatPegawai = alamat
+        }
+
+        const IdentitasProgrammer = new IdentitasPegawai('Kai', 'kai90@gmail.com', 'Jakpus');
+
+        console.log(`Nama Programmer   : ${IdentitasProgrammer.NamaPegawai}`);
+        console.log(`Email Programmer  : ${IdentitasProgrammer.EmailPegawai}`);
+        console.log(`Alamat Programmer : ${IdentitasProgrammer.AlamatPegawai}`);
+
+        // Pembatas
+        console.log('<----------No 9----------->');
+
+        // Soal 8 (Advance) (Barang)
+        
+        const BarangInventori = {
+            nama: 'Kursi',
+            harga: 5000000,
+            stok: 4,
+        }
+
+        const { nama, harga, stok } = BarangInventori;
+
+        console.log(`Nama Barang  : ${nama}`);
+        console.log(`Harga Barang : ${harga}`);
+        console.log(`Stok Barang  : ${stok}`);
+
+
+
+
+    </script>
+
+</body>
+
+</html>

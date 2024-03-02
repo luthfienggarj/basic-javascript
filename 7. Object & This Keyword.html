@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object & This Keyword</title>
+</head>
+
+<body style="background-color: #000;">
+
+    <h1 style="display: flex; justify-content: center; align-items: center; color: #fff;">
+        Object & This Keyword
+    </h1>
+
+    <script>
+
+        // Object Javascript
+
+        /* 
+        Contoh Sederhana
+        const pegawai = {
+            nama: "Luthfi",
+            salary: " $15.000"
+        }
+        console.log(pegawai)
+        // Output : nama: "Luthfi" salary: " $15.000"
+
+        //Contoh dengan Function
+        const pegawai = {
+            nama: "Luthfi",
+            salary: " $15.000",
+            greet: function() {
+                console.log("Hello World")
+            }
+        }
+        console.log(pegawai.greet());
+        // Output : "Hello World"
+
+
+        // // // // // // // // // // //
+
+
+        // This Keyword (Mengambil salah satu dari Value)
+
+        // Contoh Sederhana 
+        const company = {
+            name: "Google",
+            address: "USA",
+            greet: function() {
+                return this.name (Mengambil salah satu)
+                // return this.name + " " + this.address (Mengambil Keduanya)
+                // Output : Google USA
+            }
+        }
+        console.log(company.greet())
+        // Output : Google
+        */
+
+        // Testing JS (Lenght) Abaikan Aja
+        let Deskripsi = 'Nama Saya Luthfi Enggar'
+        let Limit = 9
+        let HasilLimit = Deskripsi.substring(0, Limit) + '...'
+        console.log(HasilLimit);
+
+
+        // Latihan Soal
+
+        // Soal 1 Object (Pemula) (Data Mahasiswa)
+        const students = {
+            name: "Enggar",
+            nim: "4182",
+            major: "Information System"
+        }
+        console.log(students);
+
+        // Soal 2 Object (Pemula) (Data Mahasiswa)
+        const Car = {
+            merk: "Honda",
+            year: "2014",
+            old: function () {
+                return 2023 - Car.year
+            }
+        }
+        console.log(Car.old());
+
+        // Soal 3 Object (Menengah) (Inventaris)
+        const Inventaris = {
+            produk: [],
+            tambahProduk: function (namaProduk, harga) {
+                this.produk.push({ namaProduk, harga })
+            }
+        }
+
+        Inventaris.tambahProduk('Laptop', 5000);
+        Inventaris.tambahProduk('Hp', 4000);
+
+        console.log('Barang Inventaris : ');
+        Inventaris.produk.forEach((produk) => {
+            console.log(`Nama Barang : '${produk.namaProduk}' Harga Produk : '${produk.harga}'`);
+        })
+
+        // Soal 4 Object (Menengah) (Perpustakaan)
+        const Perpustakaan = {
+            BukuPerpustakaan: [],
+            TambahBuku: function (JudulBuku, PenulisBuku) {
+                this.BukuPerpustakaan.push({ JudulBuku, PenulisBuku })
+            }
+        }
+
+        Perpustakaan.TambahBuku('Bumi Manusia', 'Pramoedya Ananta Toer');
+        Perpustakaan.TambahBuku('One Piece', 'Eichiro Oda');
+
+        console.log('Buku BukuPerpustakaan : ');
+        Perpustakaan.BukuPerpustakaan.forEach((BukuPerpustakaan) => {
+            console.log(`Nama Buku : ${BukuPerpustakaan.JudulBuku} Penulis Buku : ${BukuPerpustakaan.PenulisBuku}`);
+        })
+
+        // Soal 5 (Lanjutan) (Kalkulator Sederhana)
+        const Kalkulator = {
+            Penambahan: function (x, y) {
+                return x + y;
+            },
+            Pengurangan: function (x, y) {
+                return x - y;
+            },
+            Perkalian: function (x, y) {
+                return x * y;
+            },
+            Pembagian: function (x, y) {
+                return x / y;
+            }
+        }
+
+        console.log("Hasil Penambahan  : " + Kalkulator.Pembagian(40, 10));
+        console.log("Hasil Pengurangan : " + Kalkulator.Pengurangan(12, 10));
+        console.log("Hasil Perkalian   : " + Kalkulator.Perkalian(40, 10));
+        console.log("Hasil Pembagian   : " + Kalkulator.Pembagian(80, 10));
+
+        // Soal 6 (Lanjutan) (Penyewaan Mobil)
+        const MobilSatu = {
+            merk: 'Toyota Supra',
+            tahun: '1999',
+            biayaPenyewaan: 1200000,
+            jumlahHariDisewa: 5,
+            TotalHargaSewa: function () {
+                return this.biayaPenyewaan * this.jumlahHariDisewa
+            }
+        }
+
+        const MobilDua = {
+            merk: 'Honda NSX',
+            tahun: '1997',
+            biayaPenyewaan: 1440000,
+            jumlahHariDisewa: 5,
+            TotalHargaSewa: function () {
+                return this.biayaPenyewaan * this.jumlahHariDisewa
+            }
+        }
+
+        const MobilTiga = {
+            merk: 'Skyline GTR',
+            tahun: '1999',
+            biayaPenyewaan: 1900000,
+            jumlahHariDisewa: 5,
+            TotalHargaSewa: function () {
+                return this.biayaPenyewaan * this.jumlahHariDisewa
+            }
+        }
+
+        console.log('Harga Sewa Toyota Supra : Rp.' + MobilSatu.TotalHargaSewa());
+        console.log('Harga Sewa Toyota Supra : Rp.' + MobilDua.TotalHargaSewa());
+        console.log('Harga Sewa Toyota Supra : Rp.' + MobilTiga.TotalHargaSewa());
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

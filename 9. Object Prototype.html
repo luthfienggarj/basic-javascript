@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Prototype</title>
+</head>
+
+<body>
+
+    <h1>Learn Object Prototype</h1>
+
+    <script>
+
+        /* 
+        Object Prototype
+        Prototype Akan selalu ada di sebuah Object dan bisa ditambahkan maupun diganti sesuai kondisi
+        Penggunaan Hampir sama dengan Object Construction yang membedakan adalah memiliki sintaks 'prototype'
+        */
+
+        // Contoh Simple
+        function person(name) {
+            this.name = name
+        }
+        person.prototype.age = 21; // Mendeklarasikan Prototype
+
+        const person1 = new person('Luthfi');
+        console.log(person1) // Hasil Object dan Prototype
+        console.log(person1.age); // Hasil hanya Prototype
+
+        // Contoh Simple ke2
+        function Company(addressCompany, Company) {
+            this.address = addressCompany,
+                this.CompanyName = Company
+        }
+
+        Company.prototype.getFullInformation = function () {
+            return this.address + ' ' + this.CompanyName
+        }
+        const Company1 = new Company('Silicon Valley', 'Google');
+        console.log(Company1); // Menampilkan Object dan Prototype
+        console.log(Company1.getFullInformation()); // Menampilkan Address dan CompanyName
+
+
+        // Contoh Simple ke3
+        function Identity(firstName, midName, lastName) {
+            this.Fname = firstName,
+                this.Mname = midName,
+                this.Lname = lastName
+        }
+
+        // Prototype and anonymus function (Menyatukan Ke 3 Nama)
+        Identity.prototype.FullName = function () {
+            return this.Fname + ' ' + this.Mname + ' ' + this.Lname
+        }
+
+        // Deklarasi
+        const IdentityCard = new Identity('Abdul', 'Haris', 'Nasution');
+
+        // Log(..... ())
+        console.log(IdentityCard); // Menampilkan Object dan Prototype
+        console.log(IdentityCard.FullName()); // Menampilkan FirstName dan LastName
+
+
+        // Contoh Simple ke4 (Mengubah Suatu Object yang sudah di Masukan)
+        function Biodata(name) {
+            this.name = name
+        }
+        // Memasukan age Pertama
+        Biodata.prototype.age = 40;
+        // Melakukan penambahan nama pada parameter 
+        const UmurPertama = new Biodata('Kai Sang Sing Sung');
+        // Mengubah Umur
+        Biodata.prototype = { age: 50 }
+        // Menyamakan nama pada parameter, bisa juga diganti nama tersebut
+        const UmurKedua = new Biodata('Kai Sang Sing');
+        // Log
+        console.log(UmurKedua); // Menampilkan Object dan Prototype
+        console.log(UmurKedua.age); // Hanya Menampilkan Prototype
+
+
+        // Pembatas Soal - Soal
+        console.log('<------- Soal-Soal ------->');
+
+        // Soal 1 (Pemula) (Nama dan suara Binatang)
+        function Hewan(nama, suara) {
+            this.namaHewan = nama,
+                this.suaraHewan = suara
+        }
+
+        const Kucing = new Hewan('Whiskers', 'Meow');
+        const Anjing = new Hewan('Fido', 'Woff');
+
+        console.log(Kucing);
+        console.log(Anjing);
+
+
+        console.log('<------- Nomor 2 ------->');
+        // Soal 2 (Pemula) (Lanjutan No 1)
+        function Hewan2(nama, suara) {
+            this.NamaHewan = nama,
+                this.SuaraHewan = suara
+        }
+
+        Hewan2.prototype.bersuara = function () {
+            return `${this.NamaHewan} bersuara ${this.SuaraHewan}`
+        }
+        const HewanKucing = new Hewan2('Whiskers', 'Meow');
+        const HewanAnjing = new Hewan2('Fido', 'Woff');
+
+        console.log(HewanKucing.bersuara());
+        console.log(HewanAnjing.bersuara());
+
+
+        console.log('<------- Nomor 3 ------->');
+        // Soal 3 (Menengah) (Pewarisan Mobil)
+        function Kendaraan(jenis, roda) {
+            this.JenisKendaraan = jenis,
+                this.JenisRoda = roda
+        }
+
+        Kendaraan.prototype.merek = 'Toyota',
+            Kendaraan.prototype.tahun = '2022'
+
+        const Mobil = new Kendaraan('SUV', '4');
+        console.log(Mobil); // Menampilkan Object
+        console.log(Mobil.merek); // Menampilkan Merek
+        console.log(Mobil.tahun); // Menampilkan Tahun
+
+
+        console.log('<------- Nomor 4 ------->');
+        // Soal 4 (Menengah) (Lanjutan Pewarisan Mobil)
+        function Kendaraan2(jenis, roda) {
+            this.JenisKendaraan = jenis,
+                this.JenisRoda = roda
+        }
+
+        Kendaraan2.prototype.info = function () {
+            return `${this.JenisKendaraan} beroda ${this.JenisRoda}`
+        }
+
+        const Mobil2 = new Kendaraan2('Toyota', '4');
+        console.log(Mobil2.info());
+
+
+        console.log('<------- Nomor 5 ------->');
+        // Soal 5 (Lanjutan) (Biodata Mahasiswa)
+
+        function Manusia(nama, umur) {
+            this.namaMahasiswa = nama,
+            this.umurMahasiswa = umur
+        }
+
+        function Mahasiswa(nama, umur, nim) {
+            Manusia.call(this, nama, umur);
+            this.nim = nim
+        }
+        Mahasiswa.prototype.kuliah = function () {
+            return `${this.nama} Mahasiswa Aktif`
+        }
+
+        const MahasiswaBaru = new Mahasiswa("John Doe", 20, "12345");
+
+        console.log(`Nama : ${MahasiswaBaru.namaMahasiswa}`);
+        console.log(`Umur : ${MahasiswaBaru.umurMahasiswa}`);
+        console.log(`Nim : ${MahasiswaBaru.nim}`);
+        console.log(MahasiswaBaru.kuliah());
+
+
+        console.log('<------- Nomor 6 ------->');
+        // Soal 6 (Lanjutan) (Lanjutan Biodata Mahasiswa)
+
+        function Manusia(nama, umur) {
+            this.namaMahasiswa = nama,
+            this.umurMahasiswa = umur
+        }
+
+        function Mahasiswa(nama, umur, nim) {
+            Manusia.call(this, nama, umur);
+            this.nim = nim
+        }
+        Mahasiswa.prototype.tampilkanInfo = function () {
+            return `${this.namaMahasiswa} Mahasiswa Aktif`
+        }
+
+        const MahasiswaBaru2 = new Mahasiswa("John Doe", 20, "12345");
+
+        console.log(MahasiswaBaru2.tampilkanInfo());
+
+
+    </script>
+
+</body>
+
+</html>

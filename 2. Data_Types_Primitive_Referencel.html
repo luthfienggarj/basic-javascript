@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data types Primitive & Reference</title>
+</head>
+
+<body>
+    <script>
+
+        /* 
+        PRIMITIVE DATA TYPES
+        String
+        Number
+        Null
+        Boolean
+        Undefined
+        BigInt
+        Symbol
+        */
+
+        /*
+        REFERENCE
+        Object
+        Array
+        Function
+        */
+
+        //String
+        let nama = "Luthfi"
+        console.log(nama);
+
+        //Number
+        let nim = 41820010068;
+        console.log(nim);
+
+        //Null (Memiliki Kesamaan Dengan Undefined)
+        let a = null;
+        console.log(a);
+
+        //Underfined
+        let b = undefined;
+        console.log(b);
+
+        //BigInt
+        let big = 5256612152n;
+        console.log(big);
+
+        //Symbol
+        let symbol = Symbol()
+        console.log(symbol);
+
+        //Object
+        let obj = {
+            NamaDepan: "Luthfi",
+            NamaBelakang: "Juang",
+            Umur: "21"
+        }
+        console.log(obj)
+        console.log(typeof obj);
+
+        //Array (Juga bisa dikatakan Object)
+        let NamaMahasiswa = [
+            'Brian',
+            'Ich',
+            'Bino',
+            'Agel',
+        ]
+        console.log(NamaMahasiswa);
+        console.log(typeof NamaMahasiswa);
+
+        //Function
+        let aa = 3
+        function tes() {
+            console.log(aa)
+        }
+        tes()
+
+
+        /* Soal-Soal Mid & Advance */
+
+        // Soal 1 Mengembalikan Array yang merupakan angka
+
+        function FilterBuah(arr) {
+            const ValidBuah = arr.filter(NamaBuah => !/\d/.test(NamaBuah))
+            return ValidBuah
+        }
+        const NamaBuah = ['apel', 'mangga', 'pisang1', 'kiwi', 'jeruk2']
+        const HasilBuah = FilterBuah(NamaBuah)
+        console.log(HasilBuah);
+
+
+        // Soal 2
+
+        function faktorial(n) {
+            if (n === 0 || n === 1) {
+                return 1
+            } else {
+                let HasilAngka = 1;
+                for (let i = 2; i <= n; i++) {
+                    HasilAngka *= i
+                }
+                return HasilAngka
+            }
+        }
+        console.log(faktorial(5));
+
+        // Soal 3
+        function hitungRataRata (angka1, angka2, angka3) {
+            const hitungRataRata = angka1 + angka2 + angka3
+            const ratarata = hitungRataRata / 3
+            return ratarata
+        }
+
+        const hasil = hitungRataRata(10, 20, 30)
+        console.log(hasil);
+        
+
+        //Soal 4
+        function HitungNilai(angka4, angka5, angka6) {
+            const HitungNilai = angka4 + angka5 + angka6
+            const HasilNilai = HitungNilai / 3
+            return HasilNilai
+        }
+        const NilaiIPA = HitungNilai(90, 85, 88)
+        console.log(NilaiIPA)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maniputaing Element To Style</title>
+</head>
+
+<body>
+
+    <h1>Maniputaing Element To Style</h1>
+
+    <!---- Melihat Semua Elemnt Style ---->
+    <input type="text" id="username" style="padding: 10px; background-color: aliceblue;" placeholder="Username">
+    <script>
+        let SeeAll = document.getElementById("username");
+        console.log(SeeAll.style);
+        // Output : "padding-top" → "10px", "padding-right" → "10px", "padding-bottom" → "10px", "padding-left" → "10px", "background-color" → "aliceblue"
+    </script>
+
+
+    <!---- Melihat Salah Satu Element ---->
+    <input type="password" id="password" style="padding: 10px; background-color: aliceblue;" placeholder="Password">
+    <script>
+        let SeeOne = document.getElementById("password");
+        console.log(SeeOne.style.padding);
+        // Output : 10px
+    </script>
+
+
+    <!---- Menambahkan CSS Ke Element ---->
+    <input type="date" id="date" style="padding: 10px; background-color: aliceblue;" placeholder="Username">
+    <script>
+        let AddCSS = document.getElementById("date");
+        AddCSS.style.marginTop = '10px';
+        console.log(AddCSS);
+        // Output : margin-top: 10px;
+    </script>
+
+
+    <!---- Menambahkan CSS Ke Element Menggunakan CssText ---->
+    <input type="datetime-local" id="date-local" style="padding: 10px; background-color: aliceblue;" placeholder="Username">
+    <script>
+        let CssTextExample = document.getElementById("date-local");
+        CssTextExample.style.cssText += "height: 10px; width: 50%";
+        console.log(CssTextExample);
+        // Output : height: 10px; width: 50%
+    </script>
+
+<br>
+    <!---- Melihat Semua Element CSS Menggunakan getComputedStyle ---->
+    <label for="">Usia</label>
+    <input type="checkbox" id="check" style="padding: 10px; background-color: aliceblue;">
+    <script>
+        let Computed = document.getElementById("check");
+        console.log(window.getComputedStyle(Computed));
+        // Output : Menampilkan Semua Computed Style
+
+        console.log(window.getComputedStyle(Computed).padding); // Melhat Salah Satu Computed Style
+        // Output : 10px
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional & Switch Statement</title>
+    <h1>Conditional & Switch Statement JavaScript</h1>
+</head>
+
+<body>
+
+    <script>
+        /*
+        Contional If Else
+        ( Conditional if else dipakai untuk menyatakan bahwa flow memiliki 2 jalan (Ya dan Tidak) 
+        setiap jawaban memiliki jalan yang berbeda )
+        
+        if
+        else
+        else if
+
+        Contoh: 
+
+        if (condition) {
+            
+        } else {
+            
+        }
+
+        ATAU
+
+        if (condition) {
+            console.log()
+        } else if {
+            console.log()
+        } else {
+            console.log()
+        }
+
+        Conditional Switch
+        ( digunakan untuk membuat beberapa pernyataan kondisional, memungkinkan Anda mengeksekusi 
+        blok kode berbeda berdasarkan kondisi berbeda. 
+        Perbedaan dengan If Else : 
+        If Else : Melakukan filter dan melanjutkan Alur
+        Switch : Bisa memilih dari salah satu Conditional )
+
+        Contoh:
+
+        switch (key) {
+            case value:
+                
+                break;
+
+            case value:
+                
+                break;
+        
+            default:
+                break;
+        }
+
+        Switch 
+        */
+
+        // Soal 1 Conditional If Else (Beginner) (Menghitung Total Belanjaan)
+
+        let hargaBarang = 6000;
+        let jumlahItem = 5;
+        let diskon = 10;
+
+        if (jumlahItem >= 5 || jumlahItem === 5) {
+
+            let jumlahAwal = hargaBarang * jumlahItem
+            let DiskonBarang = jumlahAwal * (diskon / 100)
+            let Hargaakhir = jumlahAwal - DiskonBarang // Jika Ingin menampilkan harga total setelah diskon gunakan hargaAwal
+            // let HargaAkhir = DiskonBarang - DiskonBarang // Jika Ingin menampilkan total diskon saja sebesar 3000 gunakan hargaBarang
+            console.log(Hargaakhir);
+
+        } else {
+            console.log(hargaBarang * jumlahItem);
+        }
+
+
+        // Soal 2 Conditional If Else (Beginner) (Filter Usia)
+
+        let usia = 18;
+
+        if (usia > 17) {
+            console.log("Anda Memenuhi Syarat Untuk Mendaftar");
+        } else {
+            console.log("Anda Tidak Memenuhi Syarat");
+        }
+
+
+        // Soal 3 Conditional Switch (Beginner) (4 Aritmatika)
+
+        let angkaSatu = 100;
+        let angkaDua = 20;
+        let Aritmatika = 2;
+
+        switch (Aritmatika) {
+            case 0:
+                console.log(angkaSatu + angkaDua);
+                break;
+
+            case 1:
+                console.log(angkaSatu * angkaDua);
+                break;
+
+            case 2:
+                console.log(angkaSatu / angkaDua);
+                break;
+
+            case 3:
+                console.log(angkaSatu - angkaDua);
+                break;
+
+            default:
+                console.log("Kesalahan");
+                break;
+        }
+
+
+        // Soal 4 Switch Conditional (Beginner) (Biaya Pengiriman Barang)
+
+        let Jakarta = 50000;
+        let Surabaya = 250000;
+        let Bandung = 12000;
+        let Yogyakarta = 45000;
+
+        let LokasiPengiriman = 2;
+
+        switch (LokasiPengiriman) {
+            case 1:
+                console.log(Jakarta);
+                break;
+
+            case 2:
+                console.log(Surabaya);
+                break;
+
+            case 3:
+                console.log(Bandung);
+                break;
+
+            case 4:
+                console.log(Yogyakarta);
+                break;
+
+            default:
+                console.log("Tidak Ada Pengiriman");
+                break;
+        }
+
+
+        // Soal 5 If Else Conditional (Mid) (Jumlah Ulasan Pelanggan)
+
+        var UlasanPelanggan = 65;
+        var Rating = 5;
+
+        if (UlasanPelanggan > 50 && Rating === 5) {
+            console.log("Produk ini sangat populer dan sangat direkomendasikan!");
+        } else if (Rating === 5 || Rating === 4) {
+            console.log("Produk ini memiliki peringkat yang bagus.");
+        } else if (Rating === 3 || Rating === 2) {
+            console.log("Produk ini memiliki peringkat biasa.");
+        } else if (Rating === 1) {
+            console.log("Produk ini memiliki peringkat terendah.");
+        } else {
+            console.log("Input Salah");
+        }
+
+
+        // Soal 6 Switch Conditional (Mid) (Program Status Tugas dan Prioritas)
+
+        let statusTugas = "Dalam Proses";
+        // ["Belum Selesai", "Dalam Proses", "Selesai" ]
+
+        let prioritas = "Rendah";
+        // ["Rendah", "Sedang", "Tinggi"]
+
+        let AngkaSwitch = 5;
+
+        switch (true) {
+
+            // Tugas Sudah Selesai
+            case (statusTugas === "Selesai" && prioritas === "Tinggi"):
+                console.log("Tugas ini sudah selesai dengan prioritas tertinggi!");
+                break;
+
+            case (statusTugas === "Selesai" && prioritas === "Sedang"):
+                console.log("Tugas ini sudah selesai dengan prioritas sedang.");
+                break;
+
+            case (statusTugas === "Selesai" && prioritas === "Rendah"):
+                console.log("Tugas ini sudah selesai dengan prioritas rendah.");
+                break;
+
+            // Dalam Proses
+            case (statusTugas === "Dalam Proses" && prioritas === "Tinggi"):
+                console.log("Tugas ini masih dalam proses dengan prioritas tertinggi.");
+                break;
+
+            case (statusTugas === "Dalam Proses" && prioritas === "Sedang"):
+                console.log("Tugas ini masih dalam proses dengan prioritas sedang.");
+                break;
+
+            case (statusTugas === "Dalam Proses" && prioritas === "Rendah"):
+                console.log("Tugas ini masih dalam proses dengan prioritas rendah.");
+                break;
+
+            // Belum Selesai
+            case (statusTugas === "Belum Selesai" && prioritas === "Tinggi"):
+                console.log("Tugas ini belum selesai dengan prioritas tertinggi!");
+                break;
+
+            case (statusTugas === "Selesai" && prioritas === "Sedang"):
+                console.log("Tugas ini bBelum Selesaielum selesai dengan prioritas sedang.");
+                break;
+
+            case (statusTugas === "Belum Selesai" && prioritas === "Rendah"):
+                console.log("Tugas ini belum selesai dengan prioritas rendah.");
+                break;
+
+            default:
+                break;
+        }
+
+
+        // Soal 7 If Else (Mid) (Program Pemesanan Tiket)
+
+        let hargaTiket = 25000;
+        let usiaPenonton = 15;
+        let waktuTayang = "Malam Jumat"
+
+        if (usiaPenonton < 12 || usiaPenonton > 65) {
+            console.log(hargaTiket * 0.7);
+        } else if (waktuTayang === "Malam Jumat") {
+            console.log(hargaTiket * 0.8);
+        } else {
+            console.log(hargaTiket);
+        }
+
+        // Soal 8 If Else (Advance) (Restoran)
+
+        let JumlahPelanggan = 1;
+        let totalHargaPelanggan = 54000;
+        let MemberCard = true;
+
+        if (JumlahPelanggan > 8) {
+            console.log(totalHargaPelanggan * 0.9 + " Anda Mendapatkan Diskon Sebesar 10%");
+        } else if (MemberCard === true) {
+            console.log(totalHargaPelanggan * 0.95 + " Anda Mendapatkan Diskon Sebesar 5%");
+        } else {
+            console.log(totalHargaPelanggan);
+        }
+
+
+        // Soal 9 Switch (Advance) (Perpustakaan)
+
+        let JenisBuku = "Fiksi" //"Fiksi," "Non-Fiksi," "Referensi," atau "Majalah."
+        let usiaPeminjam = 15;
+
+        switch (true) {
+
+            //Buku Fiksi
+            case (JenisBuku === "Fiksi" && usiaPeminjam > 18):
+                console.log(JenisBuku +" Buku Dapat di pinjam selama 2 Minggu");
+                break;
+
+            case (JenisBuku === "Fiksi" && usiaPeminjam < 18):
+                console.log(JenisBuku +" Buku Dapat di pinjam selama 1 Minggu");
+                break;
+
+            //Buku Non-Fiksi
+            case (JenisBuku === "Non-Fiksi" && usiaPeminjam > 18):
+                console.log(JenisBuku +"Buku Dapat di pinjam selama 3 Minggu");
+                break;
+
+            case (JenisBuku === "Non-Fiksi" && usiaPeminjam < 18):
+                console.log(JenisBuku +" Buku Dapat di pinjam selama 2 Minggu");
+                break;
+
+            //Buku Referensi
+            case (JenisBuku === "Referensi"):
+                console.log(JenisBuku +" Tidak Ada batas Peminjaman");
+                break;
+
+            //Buku Majalah
+            case (JenisBuku === "Majalah"):
+                console.log(JenisBuku +" Dapat di pinjam selama 1 Minggu Saja");
+                break;
+
+            default:
+                break;
+        }
+
+
+        // Soal 10 (Advance) (Diskon Belajaan)
+
+        let TotalBelanjaPelanggan = 500;
+        let JumlahItemPelanggan = 50;
+
+        if (TotalBelanjaPelanggan > 1000 || TotalBelanjaPelanggan === 1000) {
+            console.log(TotalBelanjaPelanggan * 0.9 + " Anda Mendapatkan Diskon Sebesar 10%");
+        } else if (TotalBelanjaPelanggan > 500 || TotalBelanjaPelanggan === 500 && TotalBelanjaPelanggan < 1000){
+            console.log(TotalBelanjaPelanggan * 0.95 + " Anda Mendapatkan Diskon Sebesar 5%");
+        } else if (TotalBelanjaPelanggan < 500) {
+            console.log(TotalBelanjaPelanggan + " Anda Tidak Diskon");
+        } else {
+            console.log("Input Denang Benar");
+        }
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

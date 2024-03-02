@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Selector</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Document Object Model
+        DOM JavaScript adalah sesuatu yang bisa memanipulasi halaman web HTML.
+
+        A. Query Selector
+        1. getElementById();
+        2. getEmenentByName();
+        3. getEmenentByTagName();
+        4. getEmenentByClassName();
+        5. querySelector() and querySelectorAll()
+
+        */
+    </script>
+
+    <!--- getElementById(); --->
+    <h1 id="heading">By 'Id'</h1>
+    <script>
+        let head = document.getElementById('heading');
+        console.log(head);
+    </script>
+
+
+    <!--- getElementByName(); --->
+    <form>
+        <input type="text" name="Login">
+    </form>
+    <script>
+        let Log = document.getElementsByName('Login');
+        console.log(Log);
+    </script>
+
+
+    <!--- getElementTagName(); --->
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <script>
+        let Description = document.getElementsByTagName('p')
+        console.log(Description);
+    </script>
+
+
+    <!--- getElementClassName(); --->
+    <div id="Container">
+        <p class="Lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <p class="Lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    </div>
+    <script>
+        // Cara Simple
+        let Des = document.getElementsByClassName('Lorem');
+        console.log(Des);
+
+        // Bisa Juga Menggunakan Turuanan Dari Id
+        let Cont = document.getElementById('Container');
+        let Descending = Cont.getElementsByClassName('Lorem')
+        console.log(Descending);
+    </script>
+
+
+    <!--- querySelector(); --->
+    <!---- Hanya Bisa Memilih selector pertama ('.example') ---->
+    <div class="query">
+        <p class="example">World Hello !</p>
+        <p class="example">Mars Hello !</p>
+    </div>
+    <script>
+        let Example = document.querySelector('.example')
+        console.log(Example);
+    </script>
+
+
+    <!--- querySelectorAll(); --->
+    <!---- Hanya Bisa Memilih semua selector ('.secondExample') ---->
+    <div class="firstExample">
+        <p class="secondExample">Second Example</p>
+        <p class="secondExample">Third Example</p>
+    </div>
+    <script>
+        let Second = document.querySelectorAll('.secondExample')
+        console.log(Second);
+        // Bisa Juga Double Seperti Ini
+        let SSecond = document.querySelectorAll('.firstExample, .secondExample')
+        console.log(SSecond);
+        // Bisa Juga Menggunakan Id, Class, Tag Name dan Name. Selalu Awali Dengan Titik
+    </script>
+
+</body>
+
+</html>

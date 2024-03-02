@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operators JavaScript</title>
+</head>
+
+<body>
+
+    <h1 style="align-items: center; margin: 0;">JavaScript Operators</h1>
+
+    <script>
+
+        // JavaScript Operators
+
+        /*
+        Aritmatika
+        + (Penambahan)
+        - (Pengurangan)
+        * (Perkalian)
+        / (Pembagian)
+        ** (Pangkat)
+        % (Sisa Bagi = misal 10 % 3 = 1 (Output menunjukan angka yang tersisa))
+
+        Assignment
+        = (Pengisian Nilai)
+        += (Pengisian dan Penambahan)
+        -= (Pengisian dan Pengurangan)
+        /= (Pengisisan dan Pembagian)
+        *= (Pengisian dan Pembagian)
+        **= (Pengisian dan Pangkat)
+        %= (Pengisian dan Sisa Bagi)
+
+        Increament and Decreament
+        -- (Melakukan Pengurangan 1 Angka dari Variable/Number)
+        ++ (Melakukan Penambahan 1 Angka dari Variable/Number)
+
+        Comparison
+        > (Lebih Besar)
+        < (Lebih Kecil)
+        >= (Lebih Besar Sama Dengan)
+        <= (Lebih Kecil Sama Dengan)
+        === / == (Sama Dengan)
+        != / !== (Tidak Sama Dengan)
+
+        Logical
+        || (OR / Atau)
+        && (AND / Dan)
+        ! (NO / Tidak)
+
+        Predence Operator
+        (Menentukan bagaimana operator diurai satu sama lain.)
+        
+        Misal : let a = 1 + 9 * 5 (Perkalian akan di mulai terlebih dahulu dari arah Kanan ke Kiri) = 46
+        Misal : let b = 5 ** 2 ** 3 (Pemangkatan akan di mulai terlebih dahulu dari arah Kiri ke Kanan) = 15625
+        (Predence Operator dilakukan secara Otomatis, tetapi Software Eng harus mengerti Logika uraian dari Predence Operator)
+
+        
+        Ternary Operator 
+        (Manampilkan Pertanyaan dan ada 2 jawaban (Ya, Tidak) Jika "Ya" Maka menampilkan data yang ada, Jika "Tidak" maka menampilkan data yang berbeda)
+        
+        <kodisi> ? "benar" : "salah"
+        Contoh : 
+        var pertanyaan = confirm("Apakah kamu berumur diatas 18 tahun?")
+        var hasil = pertanyaan ? "Selamat datang" : "Kamu tidak boleh di sini";
+        document.write(hasil);
+        
+        */
+
+        //Soal 1 Aritmatika (Luas Segitiga)
+
+        let alas = 45;
+        let tinggi = 50;
+
+        let HasilSegitiga = alas * tinggi / 2
+        console.log(HasilSegitiga);
+
+        //Soal 2 Assigment (Diskon Belanja)
+
+        let totalBelanja = 100;
+        let diskon = 10;
+
+        let HasilBelanja = totalBelanja * (diskon / 100);
+        let SetelahDiskon = totalBelanja - HasilBelanja
+        console.log(SetelahDiskon);
+
+        //Soal 3 Increament/Decreament (Barang)
+
+        let jumlahBarang = 5;
+        let hargaSatuan = 10;
+
+        jumlahBarang += 3;
+        jumlahBarang -= 2;
+
+        let totalHarga = jumlahBarang * hargaSatuan;
+        console.log(totalHarga);
+
+        //Soal Comparison
+            
+        // A (Comparison)
+        var nilai1 = 15;
+        var nilai2 = 20;
+
+        function BandingkanNilai() {
+            var nilaihasil = nilai1 < nilai2;
+            console.log(nilaihasil);
+        }
+        BandingkanNilai();
+
+        // B (Logical)
+        let mengertiHTML = true;
+        let mengertiCSS = true;
+        let mengertiJS = true;
+
+        let apakahFullStack = (mengertiHTML && mengertiCSS && mengertiJS);
+        console.log(apakahFullStack);
+
+        // C (Comparison & Logical) (Mid)
+
+        let usia = 30;
+        let pengalamanKerja = 10;
+        let pendidikan = "Sarjana";
+
+        let cekKualifikasi = (usia > 24 && pengalamanKerja > 3 && pendidikan === "Sarjana");
+        console.log(cekKualifikasi);
+
+        // D Logical (Mid)
+        var isMember = true;
+        var isPlatinum = true;
+        var ttlBelanja = true;
+        const batasPlatinum = 1000;
+
+        const result = (isPlatinum === isMember && ttlBelanja > 1000)
+        console.log(result);
+
+        // E Comparison dan Logical (Advance)
+
+        const nilaiMahasiswa = [
+            { nama: 'Alice', matematika: 95, bahasaInggris: 89, fisika: 78 },
+            { nama: 'Bob', matematika: 88, bahasaInggris: 76, fisika: 92 },
+            { nama: 'Carol', matematika: 92, bahasaInggris: 98, fisika: 88 },
+        ];
+
+        const nilaiNilai = nilaiMahasiswa.filter((item) => {
+            return item.matematika >= 70 && item.bahasaInggris >= 70 && item.fisika >= 70
+        })
+        console.log(nilaiNilai);
+
+
+        // F Logical (Advance) (Melajutkan Soal E dengan tambahan variable)
+
+        const nilaiMahasiswaDua = [
+            { nama: 'Alice', matematika: 95, bahasaInggris: 89, fisika: 78 },
+            { nama: 'Bob', matematika: 88, bahasaInggris: 76, fisika: 92 },
+            { nama: 'Carol', matematika: 92, bahasaInggris: 98, fisika: 88 },
+        ];
+        var batasNilai = 70;
+
+        const nilaiNilaiDua = nilaiMahasiswaDua.filter((itemm) => {
+            return itemm.matematika >= batasNilai && itemm.bahasaInggris >= batasNilai && itemm.fisika >= batasNilai
+        })
+        console.log(nilaiNilaiDua);
+
+
+        // G Operators (Advance)
+        let ProdukA = 50;
+        let ProdukB = 35;
+
+        ProdukA -= 10;
+        ProdukB -= 5;
+
+        console.log(ProdukA);
+        console.log(ProdukB);
+
+
+        // H Operator (Advance)
+        const hargaProduk = [
+            { namaProduk: "Chitato", price: 12000 },
+            { namaProduk: "Air Mineral", price: 2500 },
+            { namaProduk: "Pocari", price: 8000 },
+        ];
+        var Awalbelajaan = 0;
+
+        const totalBelanjaan = hargaProduk.reduce((Awalbelajaan, ItemPrice) => {
+            return AkhirBelanja = ItemPrice.price + Awalbelajaan
+        }, 0)
+        console.log(totalBelanjaan);
+
+
+        
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atribute Method</title>
+</head>
+
+<body>
+
+    <h1>Atribute Method</h1>
+
+    <!---- Meihat Semua Attribute ---->
+    <!---- attributes ---->
+    <input type="text" id="username" placeholder="Input Name">
+    <script>
+        let seeAllAtribute = document.getElementById("username");
+        console.log(seeAllAtribute.attributes);
+        // Output : NamedNodeMap(3) [ type="text", id="username", placeholder="Input Name" ]
+    </script>
+
+
+    <!---- Meihat Salah Satu Attribute ---->
+    <!---- getAttributes ---->
+    <input type="password" id="password" placeholder="Input password">
+    <script>
+        let seeOneAtribute = document.getElementById("password");
+        console.log(seeOneAtribute.getAttribute("id"));  // Mengambil Salah Satu Value
+        // Output : password
+    </script>
+
+
+    <!---- Menambahkan Attribute ---->
+    <!---- setAttributes ---->
+    <input type="range" id="age">
+    <script>
+        let setAtribute = document.getElementById("age");
+        setAtribute.setAttribute("name", "minimum_age"); // Menambahkan Salah Satu Value
+        console.log(setAtribute);
+        // Output : <input id="age" type="range" name="minimum_age">
+    </script>
+
+
+    <!---- Mengecek Attribute (True / False) ---->
+    <!---- hasAttributes ---->
+    <input type="radio" id="Minat">
+    <script>
+        let Minat = document.getElementById("Minat");
+        console.log(Minat.hasAttribute("class"));
+        // Output : false
+    </script>
+
+
+    <!---- Mengahpus Attribute ---->
+    <!---- removeAttributes ---->
+    <input type="number" id="angka" class="number">
+    <script>
+        let remove = document.getElementById("angka");
+        remove.removeAttribute("class");
+        console.log(remove);
+        // Output : <input id="angka" type="number">
+    </script>
+</body>
+
+
+
+</html>
